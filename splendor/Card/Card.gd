@@ -6,7 +6,7 @@ export var color = "blue"
 export var cost = {"white": 0, "blue": 0, "green": 0, "red": 0, "brown": 0}
 
 var CARD_DATA = load("res://Card/CardData.gd").new()
-var COST_ORDER = ["white", "blue", "green", "red", "brown"]
+var COST_ORDER = CARD_DATA.COST_ORDER
 
 
 func set_card(level, number):

@@ -4,6 +4,8 @@ extends Node
 # 发展卡数据, "cost"中对应颜色顺序为"white", "blue", "green", "red", "brown"
 
 
+export var COST_ORDER = ["white", "blue", "green", "red", "brown"]
+
 export var PRIMARY_CARD_DATA = [
 	{"score": 0, "color": "red", "cost": [3, 0, 0, 0, 0]},                                            
 	{"score": 0, "color": "red", "cost": [2, 1, 1, 0, 1]},                                            
@@ -47,7 +49,6 @@ export var PRIMARY_CARD_DATA = [
 	{"score": 0, "color": "red", "cost": [2, 0, 0, 2, 0]}
 ]
 
-
 export var JUNIOR_CARD_DATA = [
 	{"score": 2, "color": "red", "cost": [3, 0, 0, 0, 5]},                                           
 	{"score": 3, "color": "blue", "cost": [0, 6, 0, 0, 0]},                                           
@@ -80,7 +81,6 @@ export var JUNIOR_CARD_DATA = [
 	{"score": 2, "color": "blue", "cost": [0, 5, 0, 0, 0]},                                          
 	{"score": 1, "color": "green", "cost": [2, 3, 0, 0, 2]}
 ]
-
 
 export var SENIOR_CARD_DATA = [
 	{"score": 4, "color": "brown", "cost": [0, 0, 0, 7, 0]},                                           
