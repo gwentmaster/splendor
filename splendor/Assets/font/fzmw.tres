@@ -4,5 +4,5 @@
 font_path = "res://Assets/font/fzmw.ttf"
 
 [resource]
-size = 150
+size = 300
 font_data = SubResource( 1 )

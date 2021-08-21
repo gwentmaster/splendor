@@ -140,6 +140,7 @@ margin_bottom = -635.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 6 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 Card = ExtResource( 9 )
@@ -482,13 +483,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Card0" parent="ReservedCard" instance=ExtResource( 9 )]
-position = Vector2( 58, 112 )
-scale = Vector2( 0.7, 0.7 )
+[node name="Card2" parent="ReservedCard" instance=ExtResource( 9 )]
+position = Vector2( 249, 107 )
+scale = Vector2( 0.18, 0.18 )
+cost = {
+"blue": 0,
+"brown": 0,
+"green": 0,
+"red": 0,
+"white": 0
+}
+reservable = false
+
+[node name="PurchaseButton" parent="ReservedCard/Card2" index="3"]
+margin_left = 127.778
+margin_top = -150.0
+margin_right = 377.776
+margin_bottom = 100.0
+
+[node name="ReserveButton" parent="ReservedCard/Card2" index="4"]
+visible = false
 
 [node name="Card1" parent="ReservedCard" instance=ExtResource( 9 )]
-position = Vector2( 151, 112 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2( 153, 107 )
+scale = Vector2( 0.18, 0.18 )
 cost = {
 "blue": 0,
 "brown": 0,
@@ -496,17 +514,30 @@ cost = {
 "red": 0,
 "white": 0
 }
+reservable = false
 
-[node name="Card2" parent="ReservedCard" instance=ExtResource( 9 )]
-position = Vector2( 243, 112 )
-scale = Vector2( 0.7, 0.7 )
-cost = {
-"blue": 0,
-"brown": 0,
-"green": 0,
-"red": 0,
-"white": 0
-}
+[node name="PurchaseButton" parent="ReservedCard/Card1" index="3"]
+margin_left = 127.778
+margin_top = -150.0
+margin_right = 377.776
+margin_bottom = 100.0
+
+[node name="ReserveButton" parent="ReservedCard/Card1" index="4"]
+visible = false
+
+[node name="Card0" parent="ReservedCard" instance=ExtResource( 9 )]
+position = Vector2( 57, 107 )
+scale = Vector2( 0.18, 0.18 )
+reservable = false
+
+[node name="PurchaseButton" parent="ReservedCard/Card0" index="3"]
+margin_left = 127.778
+margin_top = -150.0
+margin_right = 377.776
+margin_bottom = 100.0
+
+[node name="ReserveButton" parent="ReservedCard/Card0" index="4"]
+visible = false
 
 [node name="Nobility" type="Panel" parent="."]
 margin_left = 255.0
@@ -532,3 +563,10 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[editable path="ReservedCard/Card2"]
+[editable path="ReservedCard/Card2/ReserveButton/Gem"]
+[editable path="ReservedCard/Card1"]
+[editable path="ReservedCard/Card1/ReserveButton/Gem"]
+[editable path="ReservedCard/Card0"]
+[editable path="ReservedCard/Card0/ReserveButton/Gem"]
