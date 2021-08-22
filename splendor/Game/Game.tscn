@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/Hand.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Gem/Bank.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Card/Bank.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game/Game.gd" type="Script" id=4]
+[ext_resource path="res://Assets/sound/lobby_winter.mp3" type="AudioStream" id=5]
+
+[node name="Game" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardBank" parent="." instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 710.0
+margin_bottom = 480.0
+rect_scale = Vector2( 1.2, 1.2 )
+
+[node name="GemBank" parent="." instance=ExtResource( 2 )]
+margin_left = 896.0
+margin_top = 1.6001
+margin_right = -550.0
+margin_bottom = 135.6
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Hand" parent="." instance=ExtResource( 1 )]
+anchor_top = 1.0
+anchor_right = 0.0
+margin_left = 0.359972
+margin_top = -324.0
+margin_right = 603.36
+margin_bottom = -59.0
+rect_scale = Vector2( 1.2, 1.2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true

@@ -109,7 +109,7 @@ color = "white"
 [node name="CollisionShape2D" parent="ReserveButton/Gem" index="0"]
 shape = SubResource( 6 )
 
-[node name="Sprite" parent="ReserveButton/Gem" index="1"]
+[node name="TextureRect" parent="ReserveButton/Gem" index="1"]
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="ReserveButton"]

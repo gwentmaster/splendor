@@ -11,7 +11,7 @@ var IMAGE_PATH = "res://Assets/image/gem/"
 func set_color(color_string):
 	
 	color = color_string
-	$Sprite.texture = load(IMAGE_PATH + color_string + ".png")
+	$TextureRect.texture = load(IMAGE_PATH + color_string + ".png")
 	return self
 	
 	

@@ -15,7 +15,6 @@ func _ready():
 	card_num["brown"] = 10
 	refresh_gem_num()
 	refresh_card_num()
-	print($ReservedCard/Card0.scale)
 	
 	$ReservedCard/Card0.set_card("senior", 12)
 	
@@ -34,6 +33,7 @@ func refresh_gem_num():
 func refresh_card_num():
 	for key in card_num.keys():
 		$Resource.get_node(key.capitalize()).get_node("CardCounter").text = str(card_num[key])
+
 
 func pay_gem(price):
 	for color in price.keys():
@@ -55,6 +55,8 @@ func gain_card(card):
 
 
 func reset():
+	# 游戏初始设置
+	
 	score = 0
 	reserved_cards= []
 	gem_num = {"blue": 0, "brown": 0, "green": 0, "gold": 0, "red": 0, "white": 0}

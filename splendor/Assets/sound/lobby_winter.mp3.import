@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lobby_winter.mp3-f957f221c878966e8e15dad7d35acc7a.mp3str"
+
+[deps]
+
+source_file="res://Assets/sound/lobby_winter.mp3"
+dest_files=[ "res://.import/lobby_winter.mp3-f957f221c878966e8e15dad7d35acc7a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

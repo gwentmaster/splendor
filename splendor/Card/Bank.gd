@@ -35,7 +35,7 @@ func draw_card(level, slot):
 	if len(deck[level]) == 0:
 		return null
 	
-	# 从牌堆取一张牌放入对应位置, 由于牌堆为乱序, 故直接调用"pop"方法
+	# 从牌堆取一张牌放入对应位置, 由于牌堆为乱序, 故直接调用"pop_back"方法
 	get_node(level.capitalize()).get_node("Slot" + str(slot)).set_card(level, deck[level].pop_back())
 	
 	# 若卡已抽光, 设置对应牌堆为不可选中

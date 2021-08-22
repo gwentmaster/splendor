@@ -1,124 +1,149 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Gem/Bank.gd" type="Script" id=1]
 [ext_resource path="res://Gem/Gem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/image/gem/blue.png" type="Texture" id=3]
+[ext_resource path="res://Assets/image/gem/brown.png" type="Texture" id=4]
+[ext_resource path="res://Assets/image/gem/red.png" type="Texture" id=5]
+[ext_resource path="res://Assets/image/gem/green.png" type="Texture" id=6]
+[ext_resource path="res://Assets/image/gem/white.png" type="Texture" id=7]
+[ext_resource path="res://Assets/image/gem/gold.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
 
 [node name="Bank" type="Panel"]
-margin_left = 956.218
-margin_top = 53.5636
-margin_right = 1335.22
-margin_bottom = 786.564
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 Gem = ExtResource( 2 )
 
-[node name="BlueBank" type="Button" parent="."]
-margin_left = 218.576
-margin_top = 62.2813
-margin_right = 268.576
-margin_bottom = 112.281
-rect_pivot_offset = Vector2( 25, 25 )
-mouse_default_cursor_shape = 2
-flat = true
+[node name="BlueBank" type="Panel" parent="."]
+margin_right = 152.0
+margin_bottom = 154.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Gem" parent="BlueBank" instance=ExtResource( 2 )]
-position = Vector2( 25.1425, 25.7454 )
-color = "blue"
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
 
-[node name="BrownBank" type="Button" parent="."]
-margin_left = 216.794
-margin_top = 174.534
-margin_right = 266.794
-margin_bottom = 224.534
-rect_pivot_offset = Vector2( 25, 25 )
+[node name="TextureRect" parent="BlueBank/Gem" index="1"]
 mouse_default_cursor_shape = 2
-flat = true
+texture = ExtResource( 3 )
+
+[node name="BrownBank" type="Panel" parent="."]
+margin_left = -0.600006
+margin_top = 176.0
+margin_right = 151.4
+margin_bottom = 330.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Gem" parent="BrownBank" instance=ExtResource( 2 )]
-position = Vector2( 25.1425, 25.7454 )
-color = "blue"
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
 
-[node name="GreenBank" type="Button" parent="."]
-margin_left = 225.703
-margin_top = 274.315
-margin_right = 275.703
-margin_bottom = 324.315
-rect_pivot_offset = Vector2( 25, 25 )
+[node name="TextureRect" parent="BrownBank/Gem" index="1"]
 mouse_default_cursor_shape = 2
-flat = true
+texture = ExtResource( 4 )
+
+[node name="GreenBank" type="Panel" parent="."]
+margin_top = 352.0
+margin_right = 152.0
+margin_bottom = 506.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Gem" parent="GreenBank" instance=ExtResource( 2 )]
-position = Vector2( 25.1425, 25.7454 )
-color = "blue"
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
 
-[node name="RedBank" type="Button" parent="."]
-margin_left = 224.452
-margin_top = 364.323
-margin_right = 274.452
-margin_bottom = 414.323
-rect_pivot_offset = Vector2( 25, 25 )
+[node name="TextureRect" parent="GreenBank/Gem" index="1"]
 mouse_default_cursor_shape = 2
-flat = true
+texture = ExtResource( 6 )
+
+[node name="RedBank" type="Panel" parent="."]
+margin_top = 528.0
+margin_right = 152.0
+margin_bottom = 682.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Gem" parent="RedBank" instance=ExtResource( 2 )]
-position = Vector2( 25, 25 )
-color = "blue"
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
 
-[node name="WhiteBank" type="Button" parent="."]
-margin_left = 222.139
-margin_top = 484.567
-margin_right = 272.139
-margin_bottom = 534.567
-rect_pivot_offset = Vector2( 25, 25 )
+[node name="TextureRect" parent="RedBank/Gem" index="1"]
 mouse_default_cursor_shape = 2
-flat = true
+texture = ExtResource( 5 )
+
+[node name="WhiteBank" type="Panel" parent="."]
+margin_top = 704.0
+margin_right = 152.0
+margin_bottom = 858.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Gem" parent="WhiteBank" instance=ExtResource( 2 )]
-position = Vector2( 25.1425, 25.7454 )
-color = "blue"
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
 
-[node name="GoldBank" type="Button" parent="."]
-margin_left = 220.358
-margin_top = 586.13
-margin_right = 270.358
-margin_bottom = 636.13
-rect_pivot_offset = Vector2( 25, 25 )
+[node name="TextureRect" parent="WhiteBank/Gem" index="1"]
 mouse_default_cursor_shape = 2
-flat = true
+texture = ExtResource( 7 )
+
+[node name="GoldBank" type="Panel" parent="."]
+margin_top = 880.0
+margin_right = 152.0
+margin_bottom = 1034.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Gem" parent="GoldBank" instance=ExtResource( 2 )]
-position = Vector2( 25.1425, 25.7454 )
-color = "blue"
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
 
-[connection signal="pressed" from="BlueBank" to="." method="_on_BankButton_pressed" binds= [ "blue" ]]
-[connection signal="pressed" from="BrownBank" to="." method="_on_BankButton_pressed" binds= [ "brown" ]]
-[connection signal="pressed" from="GreenBank" to="." method="_on_BankButton_pressed" binds= [ "green" ]]
-[connection signal="pressed" from="RedBank" to="." method="_on_BankButton_pressed" binds= [ "red" ]]
-[connection signal="pressed" from="WhiteBank" to="." method="_on_BankButton_pressed" binds= [ "white" ]]
-[connection signal="pressed" from="GoldBank" to="." method="_on_BankButton_pressed" binds= [ "gold" ]]
+[node name="TextureRect" parent="GoldBank/Gem" index="1"]
+mouse_default_cursor_shape = 2
+texture = ExtResource( 8 )
+
+[connection signal="gui_input" from="BlueBank" to="." method="_on_Bank_clicked" binds= [ "blue" ]]
+[connection signal="gui_input" from="BrownBank" to="." method="_on_Bank_clicked" binds= [ "brown" ]]
+[connection signal="gui_input" from="GreenBank" to="." method="_on_Bank_clicked" binds= [ "green" ]]
+[connection signal="gui_input" from="RedBank" to="." method="_on_Bank_clicked" binds= [ "red" ]]
+[connection signal="gui_input" from="WhiteBank" to="." method="_on_Bank_clicked" binds= [ "white" ]]
+[connection signal="gui_input" from="GoldBank" to="." method="_on_Bank_clicked" binds= [ "gold" ]]
+
+[editable path="BlueBank/Gem"]
+[editable path="BrownBank/Gem"]
+[editable path="GreenBank/Gem"]
+[editable path="RedBank/Gem"]
+[editable path="WhiteBank/Gem"]
+[editable path="GoldBank/Gem"]
