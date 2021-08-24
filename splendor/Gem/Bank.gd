@@ -1,4 +1,5 @@
 extends Panel
+class_name GemBank
 
 
 export (PackedScene) var Gem
@@ -13,6 +14,14 @@ export var gem_num = {
 	"white": 0
 }
 
+var enabled_dic = {
+	"blue": true,
+	"brown": true,
+	"green": true,
+	"red": true,
+	"white": true,
+	"gold": false
+}
 var gem_banks = {}
 
 
@@ -40,8 +49,11 @@ func reset():
 		gem_banks[color].get_node("Gem").set_color(color).set_label("4")
 	
 
-func gain_gem(color, num):
+func gain_gem(color: String, num: int) -> void:
 	# 仓库获得宝石
+	# Args:
+	#     color: 宝石颜色
+	#     num: 宝石数目
 	
 	var gem = gem_banks[color].get_node("Gem")
 
@@ -59,8 +71,10 @@ func gain_gem(color, num):
 		gem.set_label(str(gem_num[color]))
 		
 
-func offer_gem(color):
+func offer_gem(color: String) -> void:
 	# 仓库向外界提供一个宝石
+	# Args:
+	#     color: 宝石颜色
 	
 	var gem_bank = gem_banks[color]
 	
@@ -75,8 +89,28 @@ func offer_gem(color):
 	else:
 		gem_num[color] -= 1
 		gem_bank.get_node("Gem").set_label(str(gem_num[color]))
+		
+		
+func set_enable(color: String, flag: bool) -> void:
+	if color == "all":
+		for c in enabled_dic.keys():
+			if c == "gold":
+				continue
+			enabled_dic[c] = flag
+	else:
+		enabled_dic[color] = flag
 
 
-func _on_Bank_clicked(event, color):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+func _on_Bank_clicked(event, color: String):
+	if (
+		event is InputEventMouseButton
+		and event.pressed
+		and event.button_index == BUTTON_LEFT
+		and enabled_dic[color] == true
+	):
+		# 个数小于4的宝石不能一次拿两个
+		if gem_num[color] < 4:
+			set_enable(color, false)
+			
 		offer_gem(color)
+		get_tree().call_group("gem_stage", "add_gem", color)

@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "Gem",
 "language": "GDScript",
 "path": "res://Gem/Gem.gd"
+}, {
+"base": "Panel",
+"class": "GemBank",
+"language": "GDScript",
+"path": "res://Gem/Bank.gd"
+}, {
+"base": "Panel",
+"class": "GemStage",
+"language": "GDScript",
+"path": "res://Player/GemStage.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
-"Gem": ""
+"Gem": "",
+"GemBank": "",
+"GemStage": ""
 }
 
 [application]

@@ -170,6 +170,8 @@ func _on_CardButton_gui_input(event):
 func _on_PurchaseButton_pressed():
 	set_unselected()
 	get_tree().call_group("card_bank", "draw_card", level, slot)
+	for color in actual_cost.keys():
+		get_tree().call_group("gem_bank", "gain_gem", color, actual_cost[color])
 
 
 func _on_ReserveButton_pressed():

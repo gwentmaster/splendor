@@ -17,12 +17,12 @@ corner_radius_top_right = 1024
 corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=9]
 font_path = "res://Assets/font/fzmw.ttf"
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
-font_data = SubResource( 4 )
+font_data = SubResource( 9 )
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 248.907

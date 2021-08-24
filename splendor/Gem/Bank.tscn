@@ -15,7 +15,9 @@ draw_center = false
 [sub_resource type="StyleBoxFlat" id=2]
 draw_center = false
 
-[node name="Bank" type="Panel"]
+[node name="Bank" type="Panel" groups=[
+"gem_bank",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
@@ -40,7 +42,6 @@ position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="BlueBank/Gem" index="1"]
-mouse_default_cursor_shape = 2
 texture = ExtResource( 3 )
 
 [node name="BrownBank" type="Panel" parent="."]
@@ -59,7 +60,6 @@ position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="BrownBank/Gem" index="1"]
-mouse_default_cursor_shape = 2
 texture = ExtResource( 4 )
 
 [node name="GreenBank" type="Panel" parent="."]
@@ -77,7 +77,6 @@ position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="GreenBank/Gem" index="1"]
-mouse_default_cursor_shape = 2
 texture = ExtResource( 6 )
 
 [node name="RedBank" type="Panel" parent="."]
@@ -95,7 +94,6 @@ position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="RedBank/Gem" index="1"]
-mouse_default_cursor_shape = 2
 texture = ExtResource( 5 )
 
 [node name="WhiteBank" type="Panel" parent="."]
@@ -113,7 +111,6 @@ position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="WhiteBank/Gem" index="1"]
-mouse_default_cursor_shape = 2
 texture = ExtResource( 7 )
 
 [node name="GoldBank" type="Panel" parent="."]
@@ -131,7 +128,6 @@ position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="GoldBank/Gem" index="1"]
-mouse_default_cursor_shape = 2
 texture = ExtResource( 8 )
 
 [connection signal="gui_input" from="BlueBank" to="." method="_on_Bank_clicked" binds= [ "blue" ]]

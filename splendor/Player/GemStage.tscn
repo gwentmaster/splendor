@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/GemStage.gd" type="Script" id=1]
+[ext_resource path="res://Gem/Gem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/image/application/confirm.png" type="Texture" id=3]
+[ext_resource path="res://Assets/image/application/cancel.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+
+[node name="GemStage" type="Panel" groups=[
+"gem_stage",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+Gem = ExtResource( 2 )
+
+[node name="Gems" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="TextureButton" parent="."]
+margin_left = 232.0
+margin_top = 776.0
+margin_right = 481.998
+margin_bottom = 1026.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="TextureButton" parent="."]
+margin_left = 1128.0
+margin_top = 776.0
+margin_right = 1378.0
+margin_bottom = 1026.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]

@@ -16,7 +16,7 @@ func _ready():
 	refresh_gem_num()
 	refresh_card_num()
 	
-	$ReservedCard/Card0.set_card("senior", 12)
+	$ReservedCard/Slot0.set_card("senior", 12)
 	
 
 func reserve_card(card):
