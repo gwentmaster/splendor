@@ -28,6 +28,7 @@ margin_left = -256.0
 margin_top = -256.0
 margin_right = 254.0
 margin_bottom = 257.0
+mouse_default_cursor_shape = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

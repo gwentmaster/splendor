@@ -6,7 +6,9 @@
 [ext_resource path="res://Assets/image/senior_card/back.jpg" type="Texture" id=4]
 [ext_resource path="res://Card/Bank.gd" type="Script" id=5]
 
-[node name="Bank" type="Panel"]
+[node name="Bank" type="Panel" groups=[
+"card_bank",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
@@ -15,7 +17,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SeniorBack" parent="." instance=ExtResource( 1 )]
+[node name="SeniorBank" parent="." instance=ExtResource( 1 )]
 position = Vector2( 48, 72 )
 scale = Vector2( 0.2, 0.2 )
 cost = {
@@ -27,17 +29,17 @@ cost = {
 }
 buyable = false
 
-[node name="Image" parent="SeniorBack/CardButton" index="0"]
+[node name="Image" parent="SeniorBank/CardButton" index="0"]
 texture = ExtResource( 4 )
 
-[node name="PurchaseButton" parent="SeniorBack" index="2"]
+[node name="PurchaseButton" parent="SeniorBank" index="2"]
 visible = false
 
-[node name="ReserveButton" parent="SeniorBack" index="3"]
+[node name="ReserveButton" parent="SeniorBank" index="3"]
 margin_top = -120.0
 margin_bottom = 130.0
 
-[node name="JuniorBack" parent="." instance=ExtResource( 1 )]
+[node name="JuniorBank" parent="." instance=ExtResource( 1 )]
 position = Vector2( 48.0001, 232 )
 scale = Vector2( 0.2, 0.2 )
 cost = {
@@ -49,28 +51,28 @@ cost = {
 }
 buyable = false
 
-[node name="Image" parent="JuniorBack/CardButton" index="0"]
+[node name="Image" parent="JuniorBank/CardButton" index="0"]
 texture = ExtResource( 2 )
 
-[node name="PurchaseButton" parent="JuniorBack" index="2"]
+[node name="PurchaseButton" parent="JuniorBank" index="2"]
 visible = false
 
-[node name="ReserveButton" parent="JuniorBack" index="3"]
+[node name="ReserveButton" parent="JuniorBank" index="3"]
 margin_top = -120.0
 margin_bottom = 130.0
 
-[node name="PrimaryBack" parent="." instance=ExtResource( 1 )]
+[node name="PrimaryBank" parent="." instance=ExtResource( 1 )]
 position = Vector2( 48.0001, 392 )
 scale = Vector2( 0.2, 0.2 )
 buyable = false
 
-[node name="Image" parent="PrimaryBack/CardButton" index="0"]
+[node name="Image" parent="PrimaryBank/CardButton" index="0"]
 texture = ExtResource( 3 )
 
-[node name="PurchaseButton" parent="PrimaryBack" index="2"]
+[node name="PurchaseButton" parent="PrimaryBank" index="2"]
 visible = false
 
-[node name="ReserveButton" parent="PrimaryBack" index="3"]
+[node name="ReserveButton" parent="PrimaryBank" index="3"]
 margin_top = -120.0
 margin_bottom = 130.0
 
@@ -91,6 +93,7 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "senior"
 
 [node name="Slot1" parent="Senior" instance=ExtResource( 1 )]
 position = Vector2( 336, 72 )
@@ -102,6 +105,8 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "senior"
+slot = 1
 
 [node name="Slot2" parent="Senior" instance=ExtResource( 1 )]
 position = Vector2( 480, 72.0001 )
@@ -113,6 +118,8 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "senior"
+slot = 2
 
 [node name="Slot3" parent="Senior" instance=ExtResource( 1 )]
 position = Vector2( 624, 72.0001 )
@@ -124,6 +131,8 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "senior"
+slot = 3
 
 [node name="Junior" type="Control" parent="."]
 margin_right = 40.0
@@ -142,6 +151,7 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "junior"
 
 [node name="Slot1" parent="Junior" instance=ExtResource( 1 )]
 position = Vector2( 336, 232 )
@@ -153,6 +163,8 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "junior"
+slot = 1
 
 [node name="Slot2" parent="Junior" instance=ExtResource( 1 )]
 position = Vector2( 480, 232 )
@@ -164,6 +176,8 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "junior"
+slot = 2
 
 [node name="Slot3" parent="Junior" instance=ExtResource( 1 )]
 position = Vector2( 624, 232 )
@@ -175,6 +189,8 @@ cost = {
 "red": 0,
 "white": 0
 }
+level = "junior"
+slot = 3
 
 [node name="Primary" type="Control" parent="."]
 margin_right = 40.0
@@ -204,6 +220,7 @@ cost = {
 "red": 0,
 "white": 0
 }
+slot = 1
 
 [node name="Slot2" parent="Primary" instance=ExtResource( 1 )]
 position = Vector2( 480, 392 )
@@ -215,6 +232,7 @@ cost = {
 "red": 0,
 "white": 0
 }
+slot = 2
 
 [node name="Slot3" parent="Primary" instance=ExtResource( 1 )]
 position = Vector2( 624, 392 )
@@ -226,10 +244,11 @@ cost = {
 "red": 0,
 "white": 0
 }
+slot = 3
 
-[editable path="SeniorBack"]
-[editable path="SeniorBack/ReserveButton/Gem"]
-[editable path="JuniorBack"]
-[editable path="JuniorBack/ReserveButton/Gem"]
-[editable path="PrimaryBack"]
-[editable path="PrimaryBack/ReserveButton/Gem"]
+[editable path="SeniorBank"]
+[editable path="SeniorBank/ReserveButton/Gem"]
+[editable path="JuniorBank"]
+[editable path="JuniorBank/ReserveButton/Gem"]
+[editable path="PrimaryBank"]
+[editable path="PrimaryBank/ReserveButton/Gem"]

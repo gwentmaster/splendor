@@ -25,6 +25,10 @@ func reserve_card(card):
 	$ReservedCardCounter.text = str(len(reserved_cards)) + "/3"
 	
 	
+func purchase_card():
+	pass
+	
+	
 func refresh_gem_num():
 	for key in gem_num.keys():
 		$Resource.get_node(key.capitalize()).get_node("GemCounter").text = str(gem_num[key])
