@@ -25,6 +25,7 @@ func reset():
 		"junior": range(30),
 		"primary": range(40)
 	}
+	randomize()
 	for v in deck.values():
 		v.shuffle()
 
@@ -50,3 +51,8 @@ func draw_card(level: String, slot: int) -> void:
 	# 若卡已抽光, 隐藏对应牌堆
 	if len(deck[level]) == 0:
 		get_node(level.capitalize() + "Bank").hide()
+
+
+func reserve_from_deck(level: String) -> int:
+	
+	return deck[level].pop_back()

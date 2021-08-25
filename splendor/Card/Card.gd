@@ -5,6 +5,8 @@ class_name Card
 export (PackedScene) var Gem
 
 
+enum CardArea {DECK = 0, BANK = 1, RESERVED = 2}
+
 export var score = 0
 export var color = "blue"
 export var cost = {"white": 0, "blue": 0, "green": 0, "red": 0, "brown": 0}
@@ -12,11 +14,16 @@ export var reservable = true
 export var buyable = true
 export var selectable = true
 export var level = "primary"
+export var serial_number = 0
+export var area = CardArea.BANK
 export var slot = 0
 var selected = false
 var actual_cost = {}
+var with_gold = true
 
 
+var GREY = Color(0.56, 0.58, 0.6)
+var BLACK = Color(0, 0, 0)
 var CARD_DATA = load("res://Card/CardData.gd").new()
 var COST_ORDER = CARD_DATA.COST_ORDER
 
@@ -27,9 +34,10 @@ func _ready():
 	$ReserveButton.hide()
 	
 	# TODO
-	cost = {"white": 1, "blue": 6, "green": 1, "red": 2, "brown": 0}
-	check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 100, "brown": 100, "green": 100, "red": 100, "white": 100, "gold": 100})
-	check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 5, "brown": 100, "green": 100, "red": 100, "white": 100, "gold": 100})	
+	cost = {"white": 1, "blue": 0, "green": 1, "red": 0, "brown": 0}
+	#check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 100, "brown": 100, "green": 100, "red": 100, "white": 100, "gold": 100})
+	#check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 5, "brown": 100, "green": 100, "red": 100, "white": 100, "gold": 100})	
+	check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 1, "gold": 0})	
 	# TODO
 
 
@@ -47,6 +55,7 @@ func set_card(level: String, number: int) -> Card:
 		score = null
 		color = null
 		cost = null
+		serial_number = null
 		return self
 	
 	# 正常发展卡
@@ -59,6 +68,7 @@ func set_card(level: String, number: int) -> Card:
 	}[level][number]
 	score = data["score"]
 	color = data["color"]
+	serial_number = number
 	for i in range(len(COST_ORDER)):
 		cost[COST_ORDER[i]] = data["cost"][i]
 	
@@ -83,12 +93,11 @@ func set_selectable(flag: bool) -> void:
 			
 func set_reservable(flag: bool) -> void:
 	$ReserveButton.set_disabled(not flag)
-	# TODO 按扭变灰
 	match flag:
 		true:
-			$ReserveButton
+			$ReserveButton/Label.add_color_override("font_color", BLACK)
 		false:
-			pass
+			$ReserveButton/Gem/Label.add_color_override("font_color", GREY)
 			
 			
 func set_buyable(flag: bool) -> void:
@@ -97,6 +106,7 @@ func set_buyable(flag: bool) -> void:
 
 func show_gold(flag: bool) -> void:
 	
+	with_gold = flag
 	match flag:
 		true:
 			$ReserveButton/Gem.show()
@@ -104,7 +114,11 @@ func show_gold(flag: bool) -> void:
 			$ReserveButton/Gem.hide()
 
 
-func check_price(card_num: Dictionary, gem_num: Dictionary):
+func check_price(card_num: Dictionary, gem_num: Dictionary) -> void:
+	# 回合开始时, 检测玩家能否购买当前卡牌
+	# Args:
+	#     card_num: 以卡牌颜色("blue", "brown"...)为键, 卡牌数目为值的字典
+	#     gem_num: 以宝石颜色为键, 宝石数目为值的字典
 	
 	# 计算实际花费宝石数目
 	actual_cost = {}
@@ -121,17 +135,31 @@ func check_price(card_num: Dictionary, gem_num: Dictionary):
 			
 	# 清空按扭之前的内容物
 	for child in $PurchaseButton.get_children():
+		if child is Label:
+			continue
 		$PurchaseButton.remove_child(child)
 		child.queue_free()
 		
 	# 无法购买
 	if gold_demand > gem_num["gold"]:
-		pass
+		set_buyable(false)
+		$PurchaseButton/Label.show()
+		$PurchaseButton/Label.add_color_override("font_color", GREY)
 	
-	# 可以购买
+	# 可以购买, 在购买按钮绘制需花费的宝石
 	else:
 		actual_cost["gold"] = gold_demand
 		set_buyable(true)
+		
+		var total_gem_num = 0
+		for v in actual_cost.values():
+			total_gem_num += v
+		if total_gem_num == 0:
+			$PurchaseButton/Label.show()
+			$PurchaseButton/Label.add_color_override("font_color", BLACK)
+			return
+		else:
+			$PurchaseButton/Label.hide()
 		
 		var x = 50
 		var y = 100
@@ -161,21 +189,46 @@ func _on_CardButton_gui_input(event):
 			get_tree().call_group_flags(2, "cards", "set_unselected")
 
 			selected = true
-			if buyable:
+			if buyable and area != CardArea.DECK:
 				$PurchaseButton.show()
-			if reservable:
+			if reservable and area != CardArea.RESERVED:
 				$ReserveButton.show()
 
 
-func _on_PurchaseButton_pressed():
+func _on_PurchaseButton_pressed() -> void:
+	# 卡牌的购买按钮被点击
+	
 	set_unselected()
-	get_tree().call_group("card_bank", "draw_card", level, slot)
+	
+	# 卡牌位于仓库则需抽卡补充, 位于保留卡区则不必
+	if area == CardArea.BANK:
+		get_tree().call_group_flags(2, "hand", "purchase_card", actual_cost, score, color)
+		get_tree().call_group("card_bank", "draw_card", level, slot)
+	elif area == CardArea.RESERVED:
+		get_tree().call_group_flags(2, "hand", "purchase_reserved_card", slot)
+		get_tree().call_group("cards", "set_reservable", true)
+	else:
+		return
+	
+	# 花费的宝石归还仓库
 	for color in actual_cost.keys():
 		get_tree().call_group("gem_bank", "gain_gem", color, actual_cost[color])
 
 
-func _on_ReserveButton_pressed():
+
+func _on_ReserveButton_pressed() -> void:
+	# 卡牌的保留按钮被点击
+	
 	set_unselected()
-	if reservable == false:
+	
+	if area == CardArea.DECK:
+		var num = get_tree().call_group_flags(2, "card_bank", level)
+		get_tree().call_group("hand", "reserve_card", level, num, with_gold)
+	elif area == CardArea.BANK:
+		get_tree().call_group_flags(2, "hand", "reserve_card", level, serial_number, with_gold)
+		get_tree().call_group("card_bank", "draw_card", level, slot)
+	else:
 		return
-	pass
+		
+	if with_gold == true:
+		get_tree().call_group("gem_bank", "offer_gem", "gold")

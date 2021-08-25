@@ -517,7 +517,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot0" parent="ReservedCard" instance=ExtResource( 9 )]
+[node name="Slot2" parent="ReservedCard" instance=ExtResource( 9 )]
 position = Vector2( 249, 107 )
 scale = Vector2( 0.18, 0.18 )
 cost = {
@@ -528,15 +528,16 @@ cost = {
 "white": 0
 }
 reservable = false
-level = "preserved"
+area = 2
+slot = 2
 
-[node name="PurchaseButton" parent="ReservedCard/Slot0" index="2"]
+[node name="PurchaseButton" parent="ReservedCard/Slot2" index="2"]
 margin_left = 127.778
 margin_top = -150.0
 margin_right = 377.776
 margin_bottom = 100.0
 
-[node name="ReserveButton" parent="ReservedCard/Slot0" index="3"]
+[node name="ReserveButton" parent="ReservedCard/Slot2" index="3"]
 visible = false
 
 [node name="Slot1" parent="ReservedCard" instance=ExtResource( 9 )]
@@ -550,7 +551,7 @@ cost = {
 "white": 0
 }
 reservable = false
-level = "preserved"
+area = 2
 slot = 1
 
 [node name="PurchaseButton" parent="ReservedCard/Slot1" index="2"]
@@ -562,20 +563,19 @@ margin_bottom = 100.0
 [node name="ReserveButton" parent="ReservedCard/Slot1" index="3"]
 visible = false
 
-[node name="Slot2" parent="ReservedCard" instance=ExtResource( 9 )]
+[node name="Slot0" parent="ReservedCard" instance=ExtResource( 9 )]
 position = Vector2( 57, 107 )
 scale = Vector2( 0.18, 0.18 )
 reservable = false
-level = "preserved"
-slot = 2
+area = 2
 
-[node name="PurchaseButton" parent="ReservedCard/Slot2" index="2"]
+[node name="PurchaseButton" parent="ReservedCard/Slot0" index="2"]
 margin_left = 127.778
 margin_top = -150.0
 margin_right = 377.776
 margin_bottom = 100.0
 
-[node name="ReserveButton" parent="ReservedCard/Slot2" index="3"]
+[node name="ReserveButton" parent="ReservedCard/Slot0" index="3"]
 visible = false
 
 [node name="Nobility" type="Panel" parent="."]
@@ -603,9 +603,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[editable path="ReservedCard/Slot0"]
-[editable path="ReservedCard/Slot0/ReserveButton/Gem"]
-[editable path="ReservedCard/Slot1"]
-[editable path="ReservedCard/Slot1/ReserveButton/Gem"]
 [editable path="ReservedCard/Slot2"]
 [editable path="ReservedCard/Slot2/ReserveButton/Gem"]
+[editable path="ReservedCard/Slot1"]
+[editable path="ReservedCard/Slot1/ReserveButton/Gem"]
+[editable path="ReservedCard/Slot0"]
+[editable path="ReservedCard/Slot0/ReserveButton/Gem"]

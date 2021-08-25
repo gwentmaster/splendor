@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "GemStage",
 "language": "GDScript",
 "path": "res://Player/GemStage.gd"
+}, {
+"base": "Panel",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://Player/Hand.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
 "Gem": "",
 "GemBank": "",
-"GemStage": ""
+"GemStage": "",
+"Hand": ""
 }
 
 [application]
