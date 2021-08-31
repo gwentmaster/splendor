@@ -6,13 +6,17 @@ export (PackedScene) var Gem
 
 
 func _ready():
-	pass
+	self.hide()
 
 
 func add_gem(color: String) -> void:
 	# 向暂存区添加1个宝石
 	# Args:
 	#     color: 宝石的颜色
+	
+	# 刚开始拿取宝石, 显示暂存区
+	if self.is_visible() == false:
+		self.show()
 
 	var children = $Gems.get_children()
 	
@@ -48,7 +52,29 @@ func _on_CancelButton_pressed():
 		child.free()
 	get_tree().call_group("gem_bank", "set_enable", "all", true)
 	get_tree().call_group("cards", "set_selectable", true)
+	self.hide()
 
 
 func _on_ConfirmButton_pressed():
-	pass # Replace with function body.
+	var tree = get_tree()
+	var gems = {}
+	for child in $Gems.get_children():
+		child.get_parent().remove_child(child)
+		gems[child.color] = gems.get(child.color, 0) + 1
+		child.free()
+	tree.call_group("hand", "gain_gem", gems)
+	self.hide()
+	
+	# 将玩家操作发给服务器并结束当前回合
+	tree.call_group(
+		"server",
+		"send_json",
+		{
+			"command": 5,
+			"data": {
+				"action": "get_gem",
+				"gems": gems
+			}
+		}
+	)
+	tree.call_group("game", "round_end")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buyable.png-e2f8851626232345fea9235934d1b9a1.stex"
+path="res://.import/25rin.png-54218e65e45181135c4a34e0594e5566.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/image/application/buyable.png"
-dest_files=[ "res://.import/buyable.png-e2f8851626232345fea9235934d1b9a1.stex" ]
+source_file="res://Assets/image/application/25rin.png"
+dest_files=[ "res://.import/25rin.png-54218e65e45181135c4a34e0594e5566.stex" ]
 
 [params]
 

@@ -101,6 +101,10 @@ func set_enable(color: String, flag: bool) -> void:
 		enabled_dic[color] = flag
 
 
+func get_game_data() -> Dictionary:
+	return gem_num
+
+
 func _on_Bank_clicked(event, color: String):
 	if (
 		event is InputEventMouseButton

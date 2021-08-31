@@ -120,5 +120,13 @@ func reset():
 	card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
 	refresh_gem_num()
 	refresh_card_num()
-		
-		
+
+
+func get_game_data() -> Dictionary:
+	
+	return {
+		"gem": gem_num,
+		"card": card_num,
+		"score": score,
+		"reserved_cards": reserved_cards
+	}

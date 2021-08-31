@@ -14,7 +14,7 @@ export var reservable = true
 export var buyable = true
 export var selectable = true
 export var level = "primary"
-export var serial_number = 0
+export var serial_number = -2
 export var area = CardArea.BANK
 export var slot = 0
 var selected = false
@@ -45,17 +45,17 @@ func set_card(level: String, number: int) -> Card:
 	# 设置卡牌, 加载卡图及卡牌数据
 	# Args:
 	# 	level: 卡牌所属分类, 在"primary", "junior", "senior"中选择
-	# 	number: 卡牌序号, 为负数时表示卡背
+	# 	number: 卡牌序号, 为`-1`时表示卡背
 	# Returns:
 	# 	卡牌对象自身
 	
-	# number为负, 表示此卡为卡背
-	if number < 0:
+	# number为`-1`, 表示此卡为卡背
+	if number == -1:
 		$CardButton/Image.texture = load("res://Assets/image/" + level + "_card/back.jpg")
 		score = null
 		color = null
 		cost = null
-		serial_number = null
+		serial_number = number
 		return self
 	
 	# 正常发展卡
@@ -97,9 +97,9 @@ func set_reservable(flag: bool) -> void:
 		true:
 			$ReserveButton/Label.add_color_override("font_color", BLACK)
 		false:
-			$ReserveButton/Gem/Label.add_color_override("font_color", GREY)
-			
-			
+			$ReserveButton/Label.add_color_override("font_color", GREY)
+
+
 func set_buyable(flag: bool) -> void:
 	$PurchaseButton.set_disabled(not flag)
 
@@ -115,7 +115,7 @@ func show_gold(flag: bool) -> void:
 
 
 func check_price(card_num: Dictionary, gem_num: Dictionary) -> void:
-	# 回合开始时, 检测玩家能否购买当前卡牌
+	# 检测玩家能否购买当前卡牌
 	# Args:
 	#     card_num: 以卡牌颜色("blue", "brown"...)为键, 卡牌数目为值的字典
 	#     gem_num: 以宝石颜色为键, 宝石数目为值的字典
@@ -213,22 +213,57 @@ func _on_PurchaseButton_pressed() -> void:
 	# 花费的宝石归还仓库
 	for color in actual_cost.keys():
 		get_tree().call_group("gem_bank", "gain_gem", color, actual_cost[color])
-
+	
+	# 将玩家操作发给服务器并结束当前回合
+	get_tree().call_group(
+		"server",
+		"send_json",
+		{
+			"command": 5,
+			"data": {
+				"action": "buy_card",
+				"cost": actual_cost,
+				"score": score,
+				"area": area,
+				"slot": slot,
+				"level": level
+			}
+		}
+	)
+	get_tree().call_group("game", "round_end")
 
 
 func _on_ReserveButton_pressed() -> void:
 	# 卡牌的保留按钮被点击
 	
 	set_unselected()
+	var tree = get_tree()
 	
 	if area == CardArea.DECK:
-		var num = get_tree().call_group_flags(2, "card_bank", level)
-		get_tree().call_group("hand", "reserve_card", level, num, with_gold)
+		var num = tree.call_group_flags(2, "card_bank", level)
+		tree.call_group("hand", "reserve_card", level, num, with_gold)
 	elif area == CardArea.BANK:
-		get_tree().call_group_flags(2, "hand", "reserve_card", level, serial_number, with_gold)
-		get_tree().call_group("card_bank", "draw_card", level, slot)
+		tree.call_group_flags(2, "hand", "reserve_card", level, serial_number, with_gold)
+		tree.call_group("card_bank", "draw_card", level, slot)
 	else:
 		return
 		
 	if with_gold == true:
-		get_tree().call_group("gem_bank", "offer_gem", "gold")
+		tree.call_group("gem_bank", "offer_gem", "gold")
+		
+	# 将玩家操作发给服务器并结束当前回合
+	tree.call_group(
+		"server",
+		"send_json",
+		{
+			"command": 5,
+			"data": {
+				"action": "reserve_card",
+				"area": area,
+				"slot": slot,
+				"level": level,
+				"with_gold": with_gold,
+			}
+		}
+	)
+	tree.call_group_flags("game", "round_end")

@@ -17,6 +17,7 @@ draw_center = false
 
 [node name="Bank" type="Panel" groups=[
 "gem_bank",
+"resetable",
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
