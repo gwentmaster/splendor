@@ -221,12 +221,14 @@ func _on_PurchaseButton_pressed() -> void:
 		{
 			"command": 5,
 			"data": {
-				"action": "buy_card",
+				"action": "purchase_card",
 				"cost": actual_cost,
 				"score": score,
 				"area": area,
 				"slot": slot,
-				"level": level
+				"level": level,
+				"color": color,
+				"serial_number": serial_number
 			}
 		}
 	)
@@ -262,6 +264,7 @@ func _on_ReserveButton_pressed() -> void:
 				"area": area,
 				"slot": slot,
 				"level": level,
+				"serial_number": serial_number,
 				"with_gold": with_gold,
 			}
 		}

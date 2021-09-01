@@ -388,6 +388,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ReservedCardSummary" type="Label" parent="."]
+margin_left = 1152.0
+margin_top = 691.5
+margin_right = 1344.0
+margin_bottom = 847.5
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0/3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [editable path="BlueArea/Gem"]
 [editable path="BrownArea/Gem"]
 [editable path="GreenArea/Gem"]

@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Hand",
 "language": "GDScript",
 "path": "res://Player/Hand.gd"
+}, {
+"base": "Area2D",
+"class": "Nobility",
+"language": "GDScript",
+"path": "res://Nobility/Nobility.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
 "Gem": "",
 "GemBank": "",
 "GemStage": "",
-"Hand": ""
+"Hand": "",
+"Nobility": ""
 }
 
 [application]

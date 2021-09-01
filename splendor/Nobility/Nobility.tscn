@@ -6,6 +6,7 @@
 extents = Vector2( 19.5102, 19.5072 )
 
 [node name="Nobility" type="Area2D"]
+scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

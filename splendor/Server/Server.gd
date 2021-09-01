@@ -7,6 +7,9 @@ var _password: String = ""
 var _session: WebSocketClient = WebSocketClient.new()
 
 
+enum CardArea {DECK = 0, BANK = 1, RESERVED = 2}
+
+
 func connect_server(name: String, password: String, host = null, port = null) -> void:
 
 	if host:
@@ -44,34 +47,68 @@ func _connected(proto: String = "") -> void:
 	pass
 
 func _on_data() -> void:
-	var data = parse_json(_session.get_peer(1).get_packet().get_string_from_utf8())
+	var server_data = parse_json(_session.get_peer(1).get_packet().get_string_from_utf8())
+	var command = server_data["command"]
+	var data = server_data["data"]
+	var tree = get_tree()
 
-	if data["command"] == 0:  # login
+	if command == 0:  # login
 		send_json({"command": 0, "data": {"name": _name, "password": _password}})
 
-	elif data["command"] == 1:  # enter_room
+	elif command == 1:  # enter_room
 		pass
 
-	elif data["command"] == 2: # create_room
+	elif command == 2: # create_room
 		pass
 
-	elif data["command"] == 3:  # recover
+	elif command == 3:  # recover
 		pass
 
-	elif data["command"] == 4:  # sync
+	elif command == 4:  # sync
 		var game_data = get_tree().call_group_flags(2, "game", "get_game_data")
 		send_json({"command": 4, "data": game_data})
 		
-	elif data["command"] == 5:  # broadcast
-		pass
+	elif command == 5:  # broadcast
+		var action = data["action"]
+		if action == "purchase_card":
+			tree.call_group(
+				"player" + data["name"],
+				"purchase_card",
+				data["cost"],
+				data["score"],
+				data["color"],
+				data["area"],
+				data["serial_number"],
+				data["level"]
+			)
+			if data["area"] == CardArea.BANK:
+				tree.call_group("card_bank", "draw_card", data["level"], data["slot"])
+			for c in data["cost"].keys():
+				tree.call_group("gem_bank", "gain_gem", c, data["cost"][c])
+		elif action == "reserve_card":
+			tree.call_group(
+				"player" + data["name"],
+				"reserve_card",
+				data["level"],
+				data["serial_number"],
+				data["with_gold"]
+			)
+			if data["area"] == CardArea.BANK:
+				tree.call_group("card_bank", "draw_card", data["level"], data["slot"])
+			elif data["area"] == CardArea.DECK:
+				tree.call_group("card_bank", "reserve_from_deck", data["level"])
+			if data["with_gold"]:
+				tree.call_group("gem_bank", "offer_gem", "gold")
+		elif action == "get_gem":
+			pass
 		
-	elif data["command"] == 6:  # game_start
-		pass
+	elif command == 6:  # game_start
+		tree.call_group_flags(2, "game", "game_start")
 		
-	elif data["command"] == 7:  # round_start
-		pass
+	elif command == 7:  # round_start
+		tree.call_group_flags(2, "game", "round_start")
 		
-	elif data["command"] == 8:  # game_end
+	elif command == 8:  # game_end
 		pass
 
 

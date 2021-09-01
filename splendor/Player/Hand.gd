@@ -22,6 +22,8 @@ func _ready():
 
 
 func arrange_reserved_card() -> void:
+	# 当保留区的卡牌被购买时, 重新排列保留区的卡牌
+
 	for i in range(len(reserved_cards)):
 		$ReservedCard.get_node("Slot" + str(i)).set_card(reserved_cards[i][0], reserved_cards[i][1]).set_selectable(true)
 	for i in range(len(reserved_cards), 3):
@@ -109,6 +111,15 @@ func gain_gem(gems: Dictionary) -> void:
 	for color in gems.keys():
 		gem_num[color] += gems[color]
 	refresh_gem_num()
+
+
+func gain_nobility(s: int) -> void:
+	# 获取贵族卡
+	# Args:
+	#     s: 贵族卡的分数
+	
+	score += s
+	$Score.text = str(score)
 
 
 func reset():
