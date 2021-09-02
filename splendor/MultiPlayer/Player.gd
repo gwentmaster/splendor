@@ -70,6 +70,24 @@ func purchase_card(cost: Dictionary, card_score: int, color: String, area: int, 
 		$ReservedCardSummary.text = str(len(reserved_cards)) + "/3"
 
 
+func reset() -> void:
+	# 还原初始设置
+	
+	for c in card_num.keys():
+		card_num[c] = 0
+	for c in gem_num.keys():
+		gem_num[c] = 0
+	score = 0
+	reserved_cards = []
+	nick_name = ""
+	id = ""
+	
+	refresh_card_num()
+	refresh_gem_num()
+	set_score(0)
+	$ReservedCardSummary.text = "0/3"
+
+
 func reserve_card(level: String, serial_number: int, with_gold: bool) -> void:
 	# 玩家保留卡牌
 	# Args:

@@ -11,16 +11,6 @@ export var score = 0
 export (PackedScene) var Card
 
 
-func _ready():
-	gem_num["gold"] = 8
-	card_num["brown"] = 10
-	refresh_gem_num()
-	refresh_card_num()
-	
-	$ReservedCard/Slot0.set_card("senior", 12)
-	get_tree().call_group("cards", "check_price", card_num, gem_num)
-
-
 func arrange_reserved_card() -> void:
 	# 当保留区的卡牌被购买时, 重新排列保留区的卡牌
 
@@ -61,6 +51,9 @@ func purchase_card(cost: Dictionary, card_score: int, color: String) -> void:
 	$Score.text = str(score)
 	card_num[color] += 1
 	refresh_card_num()
+
+	# 检查能否获得贵族卡
+	get_tree().call_group("nobility_bank", "check_price", card_num)
 	
 	
 func purchase_reserved_card(slot: int) -> void:
@@ -77,6 +70,9 @@ func purchase_reserved_card(slot: int) -> void:
 	
 	reserved_cards.erase([card.level, card.serial_number])
 	arrange_reserved_card()
+	
+	# 检查能否获得贵族卡
+	get_tree().call_group("nobility_bank", "check_price", card_num)
 	
 	
 func refresh_gem_num() -> void:
@@ -123,7 +119,7 @@ func gain_nobility(s: int) -> void:
 
 
 func reset():
-	# 游戏初始设置
+	# 还原初始设置
 	
 	score = 0
 	reserved_cards= []

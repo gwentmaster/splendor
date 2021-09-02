@@ -105,6 +105,16 @@ func get_game_data() -> Dictionary:
 	return gem_num
 
 
+func set_game_data(data: Dictionary) -> void:
+	for c in gem_num.keys():
+		gem_num[c] = data[c]
+		gem_banks[c].get_node("Gem").set_label(str(gem_num[c]))
+		if gem_num[c] == 0:
+			gem_banks[c].hide()
+		else:
+			gem_banks[c].show()
+
+
 func _on_Bank_clicked(event, color: String):
 	if (
 		event is InputEventMouseButton

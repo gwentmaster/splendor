@@ -4,17 +4,19 @@ extends Panel
 export (PackedScene) var Nobility
 
 
-var nobility_data_set = load("res://Nobility/NobilityData.gd").new()
-var NOBILITY_DATA = nobility_data_set.NOBILITY_DATA
-var COST_ORDER = nobility_data_set.COST_ORDER
-
-
 func _ready():
 	set_nobilities([2, 3, 4])
 	check_price({"blue": 4, "brown": 4, "green": 3, "red": 0, "white": 3})
 
 
 func set_nobilities(nobilities: Array) -> void:
+	# 放置贵族卡
+	# Args:
+	#     nobilities: 需放置的贵族卡序号组成的列表
+	
+	for c in self.get_children():
+		self.remove_child(c)
+		c.queue_free()
 	
 	var x = 100
 	
@@ -67,3 +69,11 @@ func remove_nobility(serial_number: int) -> void:
 		else:
 			nob.position = Vector2(x, 100)
 			x += 250
+
+
+func get_game_data() -> Array:
+	
+	var data = []
+	for nob in self.get_children():
+		data.append(nob.serial_number)
+	return data

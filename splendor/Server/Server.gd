@@ -103,12 +103,15 @@ func _on_data() -> void:
 			pass
 		
 	elif command == 6:  # game_start
-		tree.call_group_flags(2, "game", "game_start")
+		tree.call_group_flags(2, "game", "game_start", data)
 		
 	elif command == 7:  # round_start
 		tree.call_group_flags(2, "game", "round_start")
 		
-	elif command == 8:  # game_end
+	elif command == 8:  # round_end
+		pass
+		
+	elif command == 9:  # game_end
 		pass
 
 

@@ -82,3 +82,17 @@ func get_game_data() -> Dictionary:
 			data[level]["slot"].append(get_node(level.capitalize() + "/Slot" + str(i)).serial_number)
 	
 	return data
+
+
+func set_game_data(data: Dictionary) -> void:
+	
+	for level in data.keys():
+		deck[level] = data[level]["deck"]
+		for i in range(4):
+			var number: int = data[level]["slot"][i]
+			var slot: Card = get_node(level.capitalize() + "/Slot" + str(i))
+			if number == -2:
+				slot.serial_number = -2
+				slot.hide()
+			else:
+				slot.set_card(level, number)
