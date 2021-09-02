@@ -32,13 +32,6 @@ func _ready():
 	
 	$PurchaseButton.hide()
 	$ReserveButton.hide()
-	
-	# TODO
-	cost = {"white": 1, "blue": 0, "green": 1, "red": 0, "brown": 0}
-	#check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 100, "brown": 100, "green": 100, "red": 100, "white": 100, "gold": 100})
-	#check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 5, "brown": 100, "green": 100, "red": 100, "white": 100, "gold": 100})	
-	check_price({"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}, {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 1, "gold": 0})	
-	# TODO
 
 
 func set_card(level: String, number: int) -> Card:
