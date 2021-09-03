@@ -36,7 +36,7 @@ func set_name(name: String) -> void:
 	
 	self.add_to_group("player_" + name)
 	nick_name = name
-	$Name.test = name
+	$Name.text = name
 	
 	
 func set_score(s: int) -> void:
@@ -102,3 +102,9 @@ func reserve_card(level: String, serial_number: int, with_gold: bool) -> void:
 		gem_num["gold"] += 1
 		refresh_gem_num()
 
+
+func gain_gem(gems: Dictionary) -> void:
+	
+	for color in gems.keys():
+		gem_num[color] += gems[color]
+	refresh_gem_num()

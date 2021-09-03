@@ -31,12 +31,20 @@ func set_game_data(data: Dictionary) -> void:
 	tree.call_group_flags(2, "card_bank", "set_game_data", data["card_bank"])
 	tree.call_group_flags(2, "gem_bank", "set_game_data", data["gem_bank"])
 	tree.call_group_flags(2, "nobility_bank", "set_game_data", data["nobility_bank"])
+	
+	# TODO
+	tree.call_group_flags(2, "test_opponent", "set_name", data["opponent"][0])
+	# TODO
 
 
 func game_start(data: Dictionary) -> void:
+	
+	var tree = get_tree()
 	set_game_data(data)
-	get_tree().call_group_flags(2, "resetable", "reset")
-	get_tree().call_group_flags(2, "server_ui", "hide")
+	tree.call_group_flags(2, "resetable", "reset")
+	tree.call_group_flags(2, "server_ui", "hide")
+	tree.call_group_flags(2, "cards", "set_selectable", false)
+	tree.call_group_flags(2, "gem_bank", "set_enable", "all", false)
 	self.show()
 
 

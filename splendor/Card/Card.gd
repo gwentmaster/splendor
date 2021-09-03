@@ -281,4 +281,4 @@ func _on_ReserveButton_pressed() -> void:
 			}
 		}
 	)
-	tree.call_group_flags("game", "round_end")
+	tree.call_group_flags(2, "game", "round_end")

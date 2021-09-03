@@ -21,7 +21,6 @@ func connect_server(name: String, password: String, host = null, port = null) ->
 	
 	var err = _session.connect_to_url("ws://" + _host + ":" + str(_port))
 	if err != OK:
-		print(err)
 		set_process(false)
 	else:
 		set_process(true)
@@ -72,7 +71,7 @@ func _on_data() -> void:
 		var action = data["action"]
 		if action == "purchase_card":
 			tree.call_group(
-				"player" + data["name"],
+				"player_" + data["name"],
 				"purchase_card",
 				data["cost"],
 				data["score"],
@@ -87,7 +86,7 @@ func _on_data() -> void:
 				tree.call_group("gem_bank", "gain_gem", c, data["cost"][c])
 		elif action == "reserve_card":
 			tree.call_group(
-				"player" + data["name"],
+				"player_" + data["name"],
 				"reserve_card",
 				data["level"],
 				data["serial_number"],
@@ -100,7 +99,14 @@ func _on_data() -> void:
 			if data["with_gold"]:
 				tree.call_group("gem_bank", "offer_gem", "gold")
 		elif action == "get_gem":
-			pass
+			tree.call_group(
+				"player_" + data["name"],
+				"gain_gem",
+				data["gems"]
+			)
+			for c in data["gems"].keys():
+				for i in range(data["gems"][c]):
+					tree.call_group_flags(2, "gem_bank", "offer_gem", c)
 		
 	elif command == 6:  # game_start
 		tree.call_group_flags(2, "game", "game_start", data)
