@@ -35,19 +35,7 @@ func _ready():
 		"red": $RedBank,
 		"white": $WhiteBank
 	}
-	
-	reset()
-	
-func reset():
-	# 游戏初始设置
-	
-	for color in gem_num.keys():
-		gem_num[color] = 4
-	
-	for color in gem_banks.keys():
-		gem_banks[color].show()
-		gem_banks[color].get_node("Gem").set_color(color).set_label("4")
-	
+
 
 func gain_gem(color: String, num: int) -> void:
 	# 仓库获得宝石
@@ -113,6 +101,17 @@ func set_game_data(data: Dictionary) -> void:
 			gem_banks[c].hide()
 		else:
 			gem_banks[c].show()
+
+
+func round_start(player_gem_num: int) -> void:
+	# 回合开始时, 检查玩家宝石数是否为10, 达到10则本回合无法拿取宝石
+	# Args:
+	#     player_gem_num: 玩家宝石总数
+	
+	if player_gem_num < 10:
+		set_enable("all", true)
+	else:
+		set_enable("all", false)
 
 
 func _on_Bank_clicked(event, color: String):

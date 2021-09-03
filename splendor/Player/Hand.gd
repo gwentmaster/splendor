@@ -2,10 +2,11 @@ extends Panel
 class_name Hand
 
 
-export var gem_num = {"blue": 0, "brown": 0, "green": 0, "gold": 0, "red": 0, "white": 0}
-export var card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
-export var reserved_cards = []
-export var score = 0
+var gem_num = {"blue": 0, "brown": 0, "green": 0, "gold": 0, "red": 0, "white": 0}
+var gem_sum = 0
+var card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
+var reserved_cards = []
+var score = 0
 
 
 export (PackedScene) var Card
@@ -78,10 +79,13 @@ func purchase_reserved_card(slot: int) -> void:
 func refresh_gem_num() -> void:
 	# 刷新标签所显示的宝石数目
 	
+	gem_sum = 0
 	for key in gem_num.keys():
+		gem_sum += gem_num[key]
 		$Resource.get_node(key.capitalize()).get_node("GemCounter").text = str(gem_num[key])
-		
-		
+	get_tree().call_group("gem_stage", "set_player_gem_num", gem_sum)
+
+
 func refresh_card_num() -> void:
 	# 刷新标签所显示的卡牌数目
 	

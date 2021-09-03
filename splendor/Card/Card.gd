@@ -98,6 +98,7 @@ func set_buyable(flag: bool) -> void:
 
 
 func show_gold(flag: bool) -> void:
+	# 设置保留当前卡牌时能否获得黄金
 	
 	with_gold = flag
 	match flag:
@@ -105,6 +106,24 @@ func show_gold(flag: bool) -> void:
 			$ReserveButton/Gem.show()
 		false:
 			$ReserveButton/Gem.hide()
+
+
+func round_start(card_num: Dictionary, gem_num: Dictionary, gem_sum: int, bank_gold_num: int) -> void:
+	# 回合开始时设置
+	# Args:
+	#     card_num: 玩家各色卡牌数, 形如{"blue": 1, "brown": 0, ...}
+	#     gem_num: 玩家各色宝石数, 形如{"blue": 1, "brown": 0, "gold": 2, ...}
+	#     gem_sum: 玩家宝石总数
+	#     bank_gold_num: 仓库中黄金数目
+	
+	set_selectable(true)
+	check_price(card_num, gem_num)
+	
+	# 玩家宝石数达10或仓库中无黄金, 则保留卡牌无法获得黄金
+	if gem_sum >= 10 or bank_gold_num <= 0:
+		show_gold(false)
+	else:
+		show_gold(true)
 
 
 func check_price(card_num: Dictionary, gem_num: Dictionary) -> void:

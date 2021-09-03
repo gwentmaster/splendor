@@ -4,12 +4,7 @@ extends Panel
 export (PackedScene) var Nobility
 
 
-func _ready():
-	set_nobilities([2, 3, 4])
-	check_price({"blue": 4, "brown": 4, "green": 3, "red": 0, "white": 3})
-
-
-func set_nobilities(nobilities: Array) -> void:
+func set_game_data(nobilities: Array) -> void:
 	# 放置贵族卡
 	# Args:
 	#     nobilities: 需放置的贵族卡序号组成的列表

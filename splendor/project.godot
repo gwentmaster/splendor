@@ -55,12 +55,24 @@ config/description="Splendor the boardgame"
 run/main_scene="res://Main.tscn"
 config/icon="res://Assets/image/application/splendor.png"
 
+[debug]
+
+multirun/number_of_windows=2
+multirun/window_distance=1270
+multirun/add_custom_args=true
+multirun/first_window_args="listen"
+multirun/other_window_args="join"
+
 [display]
 
 window/size/width=1600
 window/size/height=900
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
 
 [physics]
 

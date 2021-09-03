@@ -44,9 +44,13 @@ func round_start() -> void:  # TODO 添加回合开始提示
 	# 回合开始时, 更新购买每张卡牌的费用, 并让卡牌与宝石可以点击
 	
 	var tree = get_tree()
-	tree.call_group_flags(2, "cards", "check_price", $Hand.card_num, $Hand.gem_num)
-	tree.call_group_flags(2, "cards", "set_selectable", true)
-	tree.call_group_flags(2, "gem_bank", "set_enable", "all", true)
+	tree.call_group_flags(
+		2,
+		"cards",
+		"round_start",
+		$Hand.card_num, $Hand.gem_num, $Hand.gem_sum, $GemBank.gem_num["gold"]
+	)
+	tree.call_group_flags(2, "gem_bank", "round_start", $Hand.gem_sum)
 
 
 func round_end() -> void:

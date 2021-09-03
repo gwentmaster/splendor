@@ -12,13 +12,6 @@ export var deck = {
 	"primary": []
 }
 
-func _ready():
-	reset()
-	
-	for level in ["senior", "junior", "primary"]:
-		for slot in range(4):
-			draw_card(level, slot)
-
 
 func reset():
 	deck = {
