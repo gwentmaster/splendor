@@ -76,7 +76,7 @@ func set_unselected() -> void:
 		
 		
 func set_selectable(flag: bool) -> void:
-	if flag and not selectable:
+	if flag and not selectable and serial_number != -2:
 		selectable = true
 	elif selectable and not flag:
 		selectable = false
