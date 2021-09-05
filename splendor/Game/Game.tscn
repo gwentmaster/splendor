@@ -42,15 +42,11 @@ margin_right = -550.0
 margin_bottom = 135.6
 rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="Hand" parent="." groups=[
-"hand",
-] instance=ExtResource( 1 )]
-anchor_top = 1.0
-anchor_right = 0.0
-margin_left = 0.359972
-margin_top = -324.0
-margin_right = 603.36
-margin_bottom = -59.0
+[node name="Hand" parent="." instance=ExtResource( 1 )]
+margin_left = 1.2
+margin_top = 568.0
+margin_right = 454.2
+margin_bottom = 843.0
 rect_scale = Vector2( 1.2, 1.2 )
 
 [node name="GemStage" parent="." instance=ExtResource( 5 )]

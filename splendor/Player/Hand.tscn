@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/image/gem/blue.png" type="Texture" id=1]
 [ext_resource path="res://Assets/image/gem/green.png" type="Texture" id=2]
@@ -15,15 +15,14 @@ draw_center = false
 
 [sub_resource type="StyleBoxFlat" id=2]
 draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0431373, 0.0941176, 0.509804, 1 )
 draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.00392157, 0.356863, 0.6, 1 )
@@ -33,69 +32,41 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.258824, 0.12549, 0.027451, 1 )
-draw_center = false
-border_width_left = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.364706, 0.2, 0.137255, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.137255, 0.494118, 0.0392157, 1 )
-draw_center = false
-border_width_left = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.0470588, 0.466667, 0.247059, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.752941, 0.109804, 0.109804, 1 )
-draw_center = false
-border_width_top = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.682353, 0.207843, 0.235294, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 1, 1, 1, 1 )
-draw_center = false
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.858824, 0.615686, 0.105882, 1 )
-draw_center = false
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 1 )
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://Assets/font/fzmw.ttf"
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="DynamicFont" id=10]
+size = 30
+font_data = SubResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=11]
 draw_center = false
 border_width_left = 2
 border_width_top = 2
@@ -103,42 +74,40 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.803922, 0.27451, 0.27451, 1 )
 draw_center = false
 border_width_left = 1
 border_width_bottom = 1
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFontData" id=16]
+[sub_resource type="DynamicFontData" id=13]
 font_path = "res://Assets/font/fzmw.ttf"
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=14]
 size = 40
-font_data = SubResource( 16 )
+font_data = SubResource( 13 )
 
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.211765, 0.0627451, 0.0627451, 1 )
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.603922, 0.278431, 0.278431, 1 )
 draw_center = false
-border_width_left = 2
+border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.603922, 0.278431, 0.278431, 1 )
+[sub_resource type="StyleBoxFlat" id=16]
 draw_center = false
-border_width_left = 2
-border_width_bottom = 2
+border_width_top = 2
+border_width_right = 2
 border_color = Color( 0, 0, 0, 1 )
 
 [node name="Hand" type="Panel" groups=[
+"hand",
 "resetable",
 ]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -997.0
-margin_bottom = -635.0
+margin_right = 453.0
+margin_bottom = 275.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -147,14 +116,14 @@ __meta__ = {
 Card = ExtResource( 9 )
 
 [node name="Resource" type="Panel" parent="."]
-anchor_left = -0.000212307
-anchor_top = -0.000754533
-anchor_right = -0.000212307
-anchor_bottom = -0.000754533
+anchor_left = 0.00192495
+anchor_top = -0.000727095
+anchor_right = 0.00192497
+anchor_bottom = -0.000727095
 margin_left = 0.127998
 margin_top = 0.199951
-margin_right = 256.222
-margin_bottom = 264.2
+margin_right = 367.128
+margin_bottom = 122.12
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
@@ -162,9 +131,10 @@ __meta__ = {
 }
 
 [node name="Blue" type="Panel" parent="Resource"]
-margin_top = 0.108887
-margin_right = 427.0
-margin_bottom = 293.109
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 168.0
+margin_bottom = 425.0
 rect_scale = Vector2( 0.3, 0.3 )
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
@@ -173,33 +143,18 @@ __meta__ = {
 }
 
 [node name="Card" type="Label" parent="Resource/Blue"]
-margin_left = 80.0001
-margin_top = 26.3037
-margin_right = 120.0
-margin_bottom = 79.3037
+margin_left = 6.10352e-05
+margin_top = -0.362961
+margin_right = 160.0
+margin_bottom = 232.637
 custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CardCounter" type="Label" parent="Resource/Blue"]
-margin_top = 83.0
-margin_right = 213.0
-margin_bottom = 373.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GemCounter" type="Label" parent="Resource/Blue"]
-margin_left = 213.0
-margin_top = 83.0
-margin_right = 427.0
-margin_bottom = 373.0
+margin_right = 160.0
+margin_bottom = 205.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -210,42 +165,21 @@ __meta__ = {
 }
 
 [node name="Gem" type="TextureRect" parent="Resource/Blue"]
-margin_left = 293.333
-margin_top = 32.9704
-margin_right = 803.333
-margin_bottom = 545.97
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 1.0
+margin_top = 205.0
+margin_right = 511.0
+margin_bottom = 718.0
+rect_scale = Vector2( 0.31, 0.31 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Brown" type="Panel" parent="Resource"]
-margin_top = 88.1089
-margin_right = 427.0
-margin_bottom = 381.109
-rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/panel = SubResource( 5 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Card" type="Label" parent="Resource/Brown"]
-margin_left = 77.7187
-margin_top = 25.5389
-margin_right = 117.719
-margin_bottom = 78.5389
-custom_styles/normal = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CardCounter" type="Label" parent="Resource/Brown"]
-margin_left = 1.0
-margin_top = 83.0
-margin_right = 213.0
-margin_bottom = 376.0
+[node name="GemCounter" type="Label" parent="Resource/Blue"]
+margin_left = -1.0
+margin_top = 205.0
+margin_right = 160.0
+margin_bottom = 410.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -255,11 +189,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemCounter" type="Label" parent="Resource/Brown"]
-margin_left = 213.0
-margin_top = 83.0
-margin_right = 427.0
-margin_bottom = 376.0
+[node name="Brown" type="Panel" parent="Resource"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 224.0
+margin_bottom = 425.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Card" type="Label" parent="Resource/Brown"]
+margin_left = 6.10352e-05
+margin_top = -0.362961
+margin_right = 160.0
+margin_bottom = 232.637
+custom_styles/normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardCounter" type="Label" parent="Resource/Brown"]
+margin_right = 160.0
+margin_bottom = 205.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -270,42 +224,21 @@ __meta__ = {
 }
 
 [node name="Gem" type="TextureRect" parent="Resource/Brown"]
-margin_left = 296.667
-margin_top = 29.637
-margin_right = 778.667
-margin_bottom = 510.637
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 1.0
+margin_top = 205.0
+margin_right = 511.0
+margin_bottom = 718.0
+rect_scale = Vector2( 0.31, 0.31 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Green" type="Panel" parent="Resource"]
-margin_top = 176.0
-margin_right = 427.0
-margin_bottom = 469.0
-rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Card" type="Label" parent="Resource/Green"]
-margin_left = 77.7187
-margin_top = 25.5389
-margin_right = 117.719
-margin_bottom = 78.5389
-custom_styles/normal = SubResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CardCounter" type="Label" parent="Resource/Green"]
-margin_left = 1.0
-margin_top = 83.0
-margin_right = 213.0
-margin_bottom = 373.0
+[node name="GemCounter" type="Label" parent="Resource/Brown"]
+margin_left = -1.0
+margin_top = 205.0
+margin_right = 160.0
+margin_bottom = 410.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -315,11 +248,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemCounter" type="Label" parent="Resource/Green"]
-margin_left = 213.0
-margin_top = 83.0
-margin_right = 427.0
-margin_bottom = 373.0
+[node name="Green" type="Panel" parent="Resource"]
+margin_left = 120.0
+margin_top = 8.0
+margin_right = 280.0
+margin_bottom = 425.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Card" type="Label" parent="Resource/Green"]
+margin_left = 6.10352e-05
+margin_top = -0.362961
+margin_right = 160.0
+margin_bottom = 232.637
+custom_styles/normal = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardCounter" type="Label" parent="Resource/Green"]
+margin_right = 160.0
+margin_bottom = 205.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -330,43 +283,21 @@ __meta__ = {
 }
 
 [node name="Gem" type="TextureRect" parent="Resource/Green"]
-margin_left = 293.333
-margin_top = 26.667
-margin_right = 798.333
-margin_bottom = 532.667
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 1.0
+margin_top = 205.0
+margin_right = 511.0
+margin_bottom = 718.0
+rect_scale = Vector2( 0.31, 0.31 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Red" type="Panel" parent="Resource"]
-margin_left = 128.0
-margin_top = 0.108887
-margin_right = 555.0
-margin_bottom = 293.109
-rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/panel = SubResource( 9 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Card" type="Label" parent="Resource/Red"]
-margin_left = 80.0001
-margin_top = 26.3037
-margin_right = 120.0
-margin_bottom = 79.3037
-custom_styles/normal = SubResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CardCounter" type="Label" parent="Resource/Red"]
-margin_left = 1.0
-margin_top = 83.0
-margin_right = 213.0
-margin_bottom = 376.0
+[node name="GemCounter" type="Label" parent="Resource/Green"]
+margin_left = -1.0
+margin_top = 205.0
+margin_right = 160.0
+margin_bottom = 410.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -376,11 +307,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemCounter" type="Label" parent="Resource/Red"]
-margin_left = 213.0
-margin_top = 83.0
-margin_right = 423.0
-margin_bottom = 373.0
+[node name="Red" type="Panel" parent="Resource"]
+margin_left = 177.0
+margin_top = 8.0
+margin_right = 337.0
+margin_bottom = 425.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Card" type="Label" parent="Resource/Red"]
+margin_left = 6.10352e-05
+margin_top = -0.362961
+margin_right = 160.0
+margin_bottom = 232.637
+custom_styles/normal = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardCounter" type="Label" parent="Resource/Red"]
+margin_right = 160.0
+margin_bottom = 205.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -391,43 +342,21 @@ __meta__ = {
 }
 
 [node name="Gem" type="TextureRect" parent="Resource/Red"]
-margin_left = 293.333
-margin_top = 26.3037
-margin_right = 799.333
-margin_bottom = 535.304
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 1.0
+margin_top = 205.0
+margin_right = 511.0
+margin_bottom = 718.0
+rect_scale = Vector2( 0.31, 0.31 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="White" type="Panel" parent="Resource"]
-margin_left = 128.0
-margin_top = 88.1089
-margin_right = 555.0
-margin_bottom = 381.109
-rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/panel = SubResource( 11 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Card" type="Label" parent="Resource/White"]
-margin_left = 77.7187
-margin_top = 25.5389
-margin_right = 117.719
-margin_bottom = 78.5389
-custom_styles/normal = SubResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CardCounter" type="Label" parent="Resource/White"]
-margin_left = 1.0
-margin_top = 83.0
-margin_right = 213.0
-margin_bottom = 376.0
+[node name="GemCounter" type="Label" parent="Resource/Red"]
+margin_left = -1.0
+margin_top = 205.0
+margin_right = 160.0
+margin_bottom = 410.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -437,11 +366,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GemCounter" type="Label" parent="Resource/White"]
-margin_left = 213.0
-margin_top = 83.0
-margin_right = 423.0
-margin_bottom = 373.0
+[node name="White" type="Panel" parent="Resource"]
+margin_left = 232.0
+margin_top = 8.0
+margin_right = 392.0
+margin_bottom = 425.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Card" type="Label" parent="Resource/White"]
+margin_left = 6.10352e-05
+margin_top = -0.362961
+margin_right = 160.0
+margin_bottom = 232.637
+custom_styles/normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardCounter" type="Label" parent="Resource/White"]
+margin_right = 160.0
+margin_bottom = 205.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -452,32 +401,21 @@ __meta__ = {
 }
 
 [node name="Gem" type="TextureRect" parent="Resource/White"]
-margin_left = 293.333
-margin_top = 29.637
-margin_right = 800.333
-margin_bottom = 536.637
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 1.0
+margin_top = 205.0
+margin_right = 511.0
+margin_bottom = 718.0
+rect_scale = Vector2( 0.31, 0.31 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Gold" type="Panel" parent="Resource"]
-margin_left = 128.0
-margin_top = 176.0
-margin_right = 555.0
-margin_bottom = 469.0
-rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/panel = SubResource( 13 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="GemCounter" type="Label" parent="Resource/Gold"]
-margin_top = 83.0
-margin_right = 440.0
-margin_bottom = 383.0
+[node name="GemCounter" type="Label" parent="Resource/White"]
+margin_left = -1.0
+margin_top = 205.0
+margin_right = 160.0
+margin_bottom = 410.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -487,40 +425,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Gold" type="Panel" parent="Resource"]
+margin_left = 295.0
+margin_top = 8.0
+margin_right = 455.0
+margin_bottom = 425.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="Gem" type="TextureRect" parent="Resource/Gold"]
-margin_left = 186.667
-margin_top = 26.667
-margin_right = 701.667
-margin_bottom = 534.667
-rect_scale = Vector2( 0.1, 0.1 )
+margin_right = 510.0
+margin_bottom = 513.0
+rect_scale = Vector2( 0.31, 0.31 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ReservedCard" type="Panel" parent="."]
-margin_left = 255.0
-margin_right = 602.0
-margin_bottom = 176.0
-custom_styles/panel = SubResource( 14 )
+[node name="GemCounter" type="Label" parent="Resource/Gold"]
+margin_right = 161.0
+margin_bottom = 205.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GemSum" type="Label" parent="Resource"]
+margin_left = 295.0
+margin_top = 70.0
+margin_right = 352.0
+margin_bottom = 122.0
+custom_fonts/font = SubResource( 10 )
+text = "0/10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReservedCard" type="Panel" parent="."]
+margin_left = 1.0
+margin_top = 117.0
+margin_right = 368.0
+margin_bottom = 275.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="ReservedCardCounter" type="Label" parent="ReservedCard"]
-margin_left = 284.0
-margin_right = 349.0
+margin_left = 303.03
+margin_right = 368.03
 margin_bottom = 47.0
-custom_styles/normal = SubResource( 15 )
-custom_fonts/font = SubResource( 17 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0/3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slot2" parent="ReservedCard" instance=ExtResource( 9 )]
-position = Vector2( 249, 107 )
+position = Vector2( 249, 80 )
 scale = Vector2( 0.18, 0.18 )
 cost = {
 "blue": 0,
@@ -543,7 +518,7 @@ margin_bottom = 100.0
 visible = false
 
 [node name="Slot1" parent="ReservedCard" instance=ExtResource( 9 )]
-position = Vector2( 153, 107 )
+position = Vector2( 153, 80 )
 scale = Vector2( 0.18, 0.18 )
 cost = {
 "blue": 0,
@@ -566,7 +541,7 @@ margin_bottom = 100.0
 visible = false
 
 [node name="Slot0" parent="ReservedCard" instance=ExtResource( 9 )]
-position = Vector2( 57, 107 )
+position = Vector2( 57, 80 )
 scale = Vector2( 0.18, 0.18 )
 reservable = false
 area = 2
@@ -580,27 +555,26 @@ margin_bottom = 100.0
 [node name="ReserveButton" parent="ReservedCard/Slot0" index="3"]
 visible = false
 
-[node name="Nobility" type="Panel" parent="."]
-margin_left = 255.0
-margin_top = 176.0
-margin_right = 603.0
-margin_bottom = 264.0
-custom_styles/panel = SubResource( 18 )
+[node name="Score" type="Label" parent="."]
+margin_left = 368.0
+margin_top = 117.0
+margin_right = 453.0
+margin_bottom = 275.0
+custom_styles/normal = SubResource( 15 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="."]
-margin_left = 539.0
-margin_top = 176.0
-margin_right = 603.0
-margin_bottom = 234.0
-custom_styles/normal = SubResource( 19 )
-custom_fonts/font = SubResource( 17 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "0"
-align = 1
-valign = 1
+[node name="RooundMark" type="Panel" parent="."]
+margin_left = 368.0
+margin_right = 453.0
+margin_bottom = 117.0
+custom_styles/panel = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
