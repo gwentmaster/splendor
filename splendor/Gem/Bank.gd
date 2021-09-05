@@ -43,7 +43,10 @@ func gain_gem(color: String, num: int) -> void:
 	# Args:
 	#     color: 宝石颜色
 	#     num: 宝石数目
-	
+
+	if num == 0:
+		return
+
 	var gem = gem_banks[color].get_node("Gem")
 
 	# 原本无宝石则宝石图案显现, 若为"gold"则让所有卡牌的"保留"按钮附加一黄金
