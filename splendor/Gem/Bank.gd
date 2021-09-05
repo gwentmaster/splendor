@@ -56,8 +56,9 @@ func gain_gem(color: String, num: int) -> void:
 	# 原本有宝石则宝石数增加
 	else:
 		gem_num[color] += num
-		gem.set_label(str(gem_num[color]))
-		
+	
+	gem.set_label(str(gem_num[color]))
+
 
 func offer_gem(color: String) -> void:
 	# 仓库向外界提供一个宝石
