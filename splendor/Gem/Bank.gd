@@ -37,6 +37,7 @@ func _ready():
 	}
 
 
+
 func gain_gem(color: String, num: int) -> void:
 	# 仓库获得宝石
 	# Args:
@@ -48,8 +49,7 @@ func gain_gem(color: String, num: int) -> void:
 	# 原本无宝石则宝石图案显现, 若为"gold"则让所有卡牌的"保留"按钮附加一黄金
 	if gem_num[color] == 0:
 		gem_num[color] += num
-		gem.set_label(str(num))
-		gem.show()
+		gem_banks[color].show()
 		if color == "gold":
 			get_tree().call_group("cards", "show_gold", true)
 	

@@ -29,6 +29,7 @@ cost = {
 }
 buyable = false
 level = "senior"
+serial_number = -1
 area = 0
 
 [node name="Image" parent="SeniorBank/CardButton" index="0"]
@@ -53,6 +54,7 @@ cost = {
 }
 buyable = false
 level = "junior"
+serial_number = -1
 area = 0
 
 [node name="Image" parent="JuniorBank/CardButton" index="0"]
@@ -69,6 +71,7 @@ margin_bottom = 130.0
 position = Vector2( 48.0001, 392 )
 scale = Vector2( 0.2, 0.2 )
 buyable = false
+serial_number = -1
 area = 0
 
 [node name="Image" parent="PrimaryBank/CardButton" index="0"]
