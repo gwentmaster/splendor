@@ -19,7 +19,7 @@ func arrange_reserved_card() -> void:
 		$ReservedCard.get_node("Slot" + str(i)).set_card(reserved_cards[i][0], reserved_cards[i][1]).set_selectable(true)
 	for i in range(len(reserved_cards), 3):
 		var card = $ReservedCard.get_node("Slot" + str(i))
-		card.get_node("CardButton/Image").texture = null
+		card.set_card(card.level, -2)
 		card.set_selectable(false)
 	
 
@@ -129,7 +129,10 @@ func reset():
 	score = 0
 	reserved_cards= []
 	gem_num = {"blue": 0, "brown": 0, "green": 0, "gold": 0, "red": 0, "white": 0}
-	card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
+	#card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
+	# TODO
+	card_num = {"blue": 10, "brown": 10, "green": 10, "red": 10, "white": 10}
+	#TODO
 	refresh_gem_num()
 	refresh_card_num()
 

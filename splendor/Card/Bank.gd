@@ -50,9 +50,13 @@ func draw_card(level: String, slot: int) -> void:
 		get_node(level.capitalize() + "Bank").hide()
 
 
-func reserve_from_deck(level: String) -> int:
+func reserve_from_deck(level: String, with_gold: bool) -> void:
 	
-	return deck[level].pop_back()
+	var num = deck[level].pop_back()
+	get_tree().call_group("hand", "reserve_card", level, num, with_gold)
+	
+	if len(deck[level]) == 0:
+		get_node(level.capitalize() + "Bank").set_card(level, -2)
 
 
 func get_game_data() -> Dictionary:
