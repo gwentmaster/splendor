@@ -11,6 +11,11 @@ var GEM_SCALE = Vector2(0.2, 0.2)
 var NOB_SCALE = Vector2(0.15, 0.15)
 
 
+func _ready():
+#	set_message("purchase_card", {"area": 1, "level": "senior", "serial_number": 2, "name": "gwentmaster"})
+	pass
+
+
 func set_message(action: String, data: Dictionary):
 	
 	$PlayerName.text = data["name"]
@@ -24,10 +29,10 @@ func set_message(action: String, data: Dictionary):
 			
 		var card = TextureRect.new()
 		card.texture = load("res://Assets/image/" + data["level"] + "_card/" + str(data["serial_number"]) + ".jpg")
+		$PopupPanel/TextureRect.texture = card.texture
 		card.rect_scale = CARD_SCALE
 		card.rect_position = Vector2(50, 0)
 		card.connect("mouse_entered", self, "_on_card_mouse_entered")
-		card.connect("mouse_exited", self, "_on_card_mouse_exited")
 		$Panel.add_child(card)
 
 	# 保留卡牌
@@ -38,10 +43,10 @@ func set_message(action: String, data: Dictionary):
 			card.texture = load("res://Assets/image/" + data["level"] + "_card/back.jpg")
 		else:
 			card.texture = load("res://Assets/image/" + data["level"] + "_card/" + str(data["serial_number"]) + ".jpg")
+		$PopupPanel/TextureRect.texture = card.texture
 		card.rect_scale = CARD_SCALE
 		card.rect_position = Vector2(50, 0)
 		card.connect("mouse_entered", self, "_on_card_mouse_entered")
-		card.connect("mouse_exited", self, "_on_card_mouse_exited")
 		$Panel.add_child(card)
 		
 		if data["with_gold"]:
@@ -75,12 +80,15 @@ func set_message(action: String, data: Dictionary):
 
 
 func _on_card_mouse_entered() -> void:
-	for card in $Panel.get_children():
-		card.rect_scale = CARD_SCALE_LARGER
+	
+	var position = Vector2(0, 0)
+	for child in $Panel.get_children():
+		position = child.rect_global_position
 		break
 
+	$PopupPanel.rect_position = position
+	$PopupPanel.popup()
 
-func _on_card_mouse_exited() -> void:
-	for card in $Panel.get_children():
-		card.rect_scale = CARD_SCALE
-		break
+
+func _on_PopupPanel_mouse_exited():
+	$PopupPanel.hide()
