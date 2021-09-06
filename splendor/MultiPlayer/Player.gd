@@ -65,6 +65,15 @@ func purchase_card(data: Dictionary) -> void:
 		$ReservedCardSummary.text = str(len(reserved_cards)) + "/3"
 
 
+func gain_nobility(score: int) -> void:
+	# 玩家获得贵族
+	# Args:
+	#     score: 贵族分数
+	
+	self.score += score
+	$Score.text = str(self.score)
+
+
 func reset() -> void:
 	# 还原初始设置
 	

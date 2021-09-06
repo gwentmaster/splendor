@@ -102,6 +102,17 @@ func _on_data() -> void:
 			for c in data["gems"].keys():
 				for i in range(data["gems"][c]):
 					tree.call_group_flags(2, "gem_bank", "offer_gem", c)
+		elif action == "get_nobility":
+			tree.call_group(
+				"player_" + data["name"],
+				"gain_nobility",
+				data["score"]
+			)
+			tree.call_group(
+				"nobility_bank",
+				"remove_nobility",
+				data["serial_number"]
+			)
 		
 	elif command == 6:  # game_start
 		tree.call_group_flags(2, "game", "game_start", data)
