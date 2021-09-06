@@ -129,10 +129,7 @@ func reset():
 	score = 0
 	reserved_cards= []
 	gem_num = {"blue": 0, "brown": 0, "green": 0, "gold": 0, "red": 0, "white": 0}
-	#card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
-	# TODO
-	card_num = {"blue": 10, "brown": 10, "green": 10, "red": 10, "white": 10}
-	#TODO
+	card_num = {"blue": 0, "brown": 0, "green": 0, "red": 0, "white": 0}
 	refresh_gem_num()
 	refresh_card_num()
 

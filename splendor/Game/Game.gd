@@ -59,6 +59,7 @@ func round_start() -> void:  # TODO 添加回合开始提示
 		$Hand.card_num, $Hand.gem_num, $Hand.gem_sum, $GemBank.gem_num["gold"]
 	)
 	tree.call_group_flags(2, "gem_bank", "round_start", $Hand.gem_sum)
+	$Hand/RoundMark/TextureRect.show()
 
 
 func round_end() -> void:
@@ -68,3 +69,4 @@ func round_end() -> void:
 	tree.call_group_flags(2, "cards", "set_selectable", false)
 	tree.call_group_flags(2, "gem_bank", "set_enable", "all", false)
 	tree.call_group_flags(2, "server", "send_json", {"command": 8, "data": {}})
+	$Hand/RoundMark/TextureRect.hide()
