@@ -73,12 +73,7 @@ func _on_data() -> void:
 			tree.call_group(
 				"player_" + data["name"],
 				"purchase_card",
-				data["cost"],
-				data["score"],
-				data["color"],
-				data["area"],
-				data["serial_number"],
-				data["level"]
+				data
 			)
 			if data["area"] == CardArea.BANK:
 				tree.call_group("card_bank", "draw_card", data["level"], data["slot"])

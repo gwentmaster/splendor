@@ -37,36 +37,31 @@ func set_name(name: String) -> void:
 	self.add_to_group("player_" + name)
 	nick_name = name
 	$Name.text = name
-	
-	
-func set_score(s: int) -> void:
-	# 设置玩家分数
-	# Args:
-	#     s: 需设置的分数
-	
-	score = s
-	$Score.text = str(s)
 
 
-func purchase_card(cost: Dictionary, card_score: int, color: String, area: int, serial_number: int, level: String) -> void:
+func purchase_card(data: Dictionary) -> void:
 	# 玩家购买卡牌
 	# Args:
-	#     cost: 购买卡牌的实际开销, 形如{"blue": 1, "gold": 1}
-	#     card_score: 卡牌分数
-	#     color: 卡牌颜色
-	#     area: 卡牌所在区域, 见 `CardArem`
-	#     serial_number: 卡牌序号
-	#     level: 卡牌所属类别
+	#     data: 含以下键的字典
+	#         cost: 购买卡牌的实际开销, 形如{"blue": 1, "gold": 1}
+	#         score: 卡牌分数
+	#         color: 卡牌颜色
+	#         area: 卡牌所在区域, 见 `CardArem`
+	#         serial_number: 卡牌序号
+	#         level: 卡牌所属类别
 	
-	for c in cost.keys():
-		gem_num[c] -= cost[c]
+	for c in data["cost"].keys():
+		gem_num[c] -= data["cost"][c]
 	refresh_gem_num()
 	
-	card_num[color] += 1
+	card_num[data["color"]] += 1
 	refresh_card_num()
 	
-	if area == CardArea.RESERVED:
-		reserved_cards.erase([level, serial_number])
+	score += data["score"]
+	$Score.text = str(score)
+
+	if data["area"] == CardArea.RESERVED:
+		reserved_cards.erase([data["level"], data["serial_number"]])
 		$ReservedCardSummary.text = str(len(reserved_cards)) + "/3"
 
 
@@ -84,7 +79,8 @@ func reset() -> void:
 	
 	refresh_card_num()
 	refresh_gem_num()
-	set_score(0)
+	score = 0
+	$Score.text = str(score)
 	$ReservedCardSummary.text = "0/3"
 
 
