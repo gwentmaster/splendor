@@ -68,6 +68,7 @@ func _on_data() -> void:
 		send_json({"command": 4, "data": game_data})
 		
 	elif command == 5:  # broadcast
+		tree.call_group("log", "append_message", data)
 		var action = data["action"]
 		if action == "purchase_card":
 			tree.call_group(

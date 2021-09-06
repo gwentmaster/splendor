@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/Hand.gd"
 }, {
+"base": "ScrollContainer",
+"class": "Log",
+"language": "GDScript",
+"path": "res://Log/Log.gd"
+}, {
+"base": "Panel",
+"class": "Message",
+"language": "GDScript",
+"path": "res://Log/Message.gd"
+}, {
 "base": "Area2D",
 "class": "Nobility",
 "language": "GDScript",
@@ -45,6 +55,8 @@ _global_script_class_icons={
 "GemBank": "",
 "GemStage": "",
 "Hand": "",
+"Log": "",
+"Message": "",
 "Nobility": ""
 }
 

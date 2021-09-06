@@ -1,6 +1,14 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+
+export var score = 0
+export var gem = {\"blue\": 0, \"brown\": 0, \"green\": 0, \"gold\": 0, \"red\": 0, \"white\": 0}
+export var card = {\"blue\": 0, \"brown\": 0, \"green\": 0, \"gold\": 0, \"red\": 0, \"white\": 0}
+export var reserved_cards = []
+"
 
 [node name="Node" type="Node"]
-script = ExtResource( 1 )
+script = SubResource( 1 )

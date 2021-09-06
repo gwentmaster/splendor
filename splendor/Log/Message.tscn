@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Log/Message.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/font/fzmw.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+
+[node name="Message" type="Panel"]
+margin_right = 800.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 120.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 3 )
+text = "玩家"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="."]
+margin_left = 120.0
+margin_right = 488.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.992157, 1, 0.0823529, 1 )
+align = 1
+
+[node name="Action" type="Label" parent="."]
+margin_left = 488.0
+margin_right = 800.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 69.0
+margin_right = 536.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tail" type="Label" parent="."]
+margin_left = 400.0
+margin_top = 96.0
+margin_right = 800.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 3 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
