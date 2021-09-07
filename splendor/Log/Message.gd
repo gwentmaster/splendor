@@ -11,14 +11,13 @@ var GEM_SCALE = Vector2(0.2, 0.2)
 var NOB_SCALE = Vector2(0.15, 0.15)
 
 
-func _ready():
-#	set_message("purchase_card", {"area": 1, "level": "senior", "serial_number": 2, "name": "gwentmaster"})
-	pass
-
-
 func set_message(action: String, data: Dictionary):
 	
-	$PlayerName.text = data["name"]
+	if "name" in data:
+		$PlayerName.text = data["name"]
+	else:
+		$PlayerName.text = "本玩家"
+		$Label.text = ""
 
 	# 购买卡牌
 	if action == "purchase_card":

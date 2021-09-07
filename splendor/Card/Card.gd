@@ -245,24 +245,26 @@ func _on_PurchaseButton_pressed() -> void:
 		tree.call_group("gem_bank", "gain_gem", color, actual_cost[color])
 	
 	# 将玩家操作发给服务器并结束当前回合
+	var data = {
+		"action": "purchase_card",
+		"cost": actual_cost,
+		"score": score,
+		"area": area,
+		"slot": slot,
+		"level": level,
+		"color": color,
+		"serial_number": serial_number
+	}
 	tree.call_group(
 		"server",
 		"send_json",
 		{
 			"command": 5,
-			"data": {
-				"action": "purchase_card",
-				"cost": actual_cost,
-				"score": score,
-				"area": area,
-				"slot": slot,
-				"level": level,
-				"color": color,
-				"serial_number": serial_number
-			}
+			"data": data
 		}
 	)
-	get_tree().call_group("game", "round_end")
+	tree.call_group("log", "append_message", data)
+	tree.call_group("game", "round_end")
 
 
 func _on_ReserveButton_pressed() -> void:
@@ -283,19 +285,21 @@ func _on_ReserveButton_pressed() -> void:
 		tree.call_group("gem_bank", "offer_gem", "gold")
 		
 	# 将玩家操作发给服务器并结束当前回合
+	var data = {
+		"action": "reserve_card",
+		"area": area,
+		"slot": slot,
+		"level": level,
+		"serial_number": serial_number,
+		"with_gold": with_gold
+	}
 	tree.call_group(
 		"server",
 		"send_json",
 		{
 			"command": 5,
-			"data": {
-				"action": "reserve_card",
-				"area": area,
-				"slot": slot,
-				"level": level,
-				"serial_number": serial_number,
-				"with_gold": with_gold,
-			}
+			"data": data
 		}
 	)
+	tree.call_group("log", "append_message", data)
 	tree.call_group_flags(2, "game", "round_end")

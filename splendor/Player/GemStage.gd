@@ -76,15 +76,14 @@ func _on_ConfirmButton_pressed():
 	self.hide()
 	
 	# 将玩家操作发给服务器并结束当前回合
+	var data = {"action": "get_gem", "gems": gems}
 	tree.call_group(
 		"server",
 		"send_json",
 		{
 			"command": 5,
-			"data": {
-				"action": "get_gem",
-				"gems": gems
-			}
+			"data": data
 		}
 	)
+	tree.call_group("log", "append_message", data)
 	tree.call_group("game", "round_end")

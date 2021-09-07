@@ -40,20 +40,22 @@ func check_price(card_num: Dictionary) -> void:
 
 		# 能够获取, 将此贵族卡移出, 玩家得分, 并通知服务端
 		if buyable:
-			self.remove_child(nob)  # TODO 此步骤能否在get_children的循环中进行?
+			self.remove_child(nob)
+			var data = {
+				"action": "get_nobility",
+				"score": nob.score,
+				"serial_number": nob.serial_number 
+			}
 			tree.call_group("hand", "gain_nobility", nob.score)
 			tree.call_group(
 				"server",
 				"send_json",
 				{
 					"command": 5,
-					"data": {
-						"action": "get_nobility",
-						"score": nob.score,
-						"serial_number": nob.serial_number
-					}
+					"data": data
 				}
 			)
+			tree.call_group("log", "append_msg", data)
 			nob.queue_free()
 
 		# 不能获取, 调整贵族卡位置
