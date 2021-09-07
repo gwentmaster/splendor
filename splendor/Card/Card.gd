@@ -230,6 +230,18 @@ func _on_PurchaseButton_pressed() -> void:
 	set_unselected()
 	var tree = get_tree()
 	
+	# 本地购买卡牌数, 槽位数据会变动, 先记录需发送给服务端的数据
+	var data = {
+		"action": "purchase_card",
+		"cost": actual_cost,
+		"score": score,
+		"area": area,
+		"slot": slot,
+		"level": level,
+		"color": color,
+		"serial_number": serial_number
+	}
+	
 	# 卡牌位于仓库则需抽卡补充, 位于保留卡区则不必
 	if area == CardArea.BANK:
 		tree.call_group_flags(2, "hand", "purchase_card", actual_cost, score, color)
@@ -245,16 +257,6 @@ func _on_PurchaseButton_pressed() -> void:
 		tree.call_group("gem_bank", "gain_gem", color, actual_cost[color])
 	
 	# 将玩家操作发给服务器并结束当前回合
-	var data = {
-		"action": "purchase_card",
-		"cost": actual_cost,
-		"score": score,
-		"area": area,
-		"slot": slot,
-		"level": level,
-		"color": color,
-		"serial_number": serial_number
-	}
 	tree.call_group(
 		"server",
 		"send_json",

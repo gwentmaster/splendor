@@ -21,7 +21,7 @@ func arrange_reserved_card() -> void:
 		var card = $ReservedCard.get_node("Slot" + str(i))
 		card.set_card(card.level, -2)
 		card.set_selectable(false)
-	
+
 
 func reserve_card(level: String, serial_number: int, with_gold: bool) -> void:
 	# 保留卡牌
