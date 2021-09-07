@@ -61,7 +61,7 @@ func purchase_card(data: Dictionary) -> void:
 	$Score.text = str(score)
 
 	if data["area"] == CardArea.RESERVED:
-		reserved_cards.erase([data["level"], data["serial_number"]])
+		reserved_cards.erase([data["level"], int(data["serial_number"])])
 		$ReservedCardSummary.text = str(len(reserved_cards)) + "/3"
 
 
