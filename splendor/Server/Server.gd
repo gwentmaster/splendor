@@ -91,7 +91,7 @@ func _on_data() -> void:
 			if data["area"] == CardArea.BANK:
 				tree.call_group("card_bank", "draw_card", data["level"], data["slot"])
 			elif data["area"] == CardArea.DECK:
-				tree.call_group("card_bank", "reserve_from_deck", data["level"])
+				tree.call_group("card_bank", "reserve_from_deck", data["level"], data["with_gold"], false)
 			if data["with_gold"]:
 				tree.call_group("gem_bank", "offer_gem", "gold")
 		elif action == "get_gem":

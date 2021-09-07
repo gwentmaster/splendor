@@ -230,7 +230,7 @@ func _on_PurchaseButton_pressed() -> void:
 	set_unselected()
 	var tree = get_tree()
 	
-	# 本地购买卡牌数, 槽位数据会变动, 先记录需发送给服务端的数据
+	# 本地购买卡牌后, 槽位数据会变动, 先记录需发送给服务端的数据
 	var data = {
 		"action": "purchase_card",
 		"cost": actual_cost,

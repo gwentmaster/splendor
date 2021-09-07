@@ -50,10 +50,11 @@ func draw_card(level: String, slot: int) -> void:
 		get_node(level.capitalize() + "Bank").hide()
 
 
-func reserve_from_deck(level: String, with_gold: bool) -> void:
+func reserve_from_deck(level: String, with_gold: bool, local_player: bool = true) -> void:
 	
 	var num = deck[level].pop_back()
-	get_tree().call_group("hand", "reserve_card", level, num, with_gold)
+	if local_player:
+		get_tree().call_group_flags(2, "hand", "reserve_card", level, num, with_gold)
 	
 	if len(deck[level]) == 0:
 		get_node(level.capitalize() + "Bank").set_card(level, -2)
