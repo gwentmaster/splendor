@@ -39,6 +39,7 @@ func set_game_data(data: Dictionary) -> void:
 
 func game_start(data: Dictionary) -> void:
 	
+#	$AudioStreamPlayer.play()
 	var tree = get_tree()
 	set_game_data(data)
 	tree.call_group_flags(2, "resetable", "reset")
@@ -52,6 +53,7 @@ func round_start() -> void:  # TODO 添加回合开始提示
 	# 回合开始时, 更新购买每张卡牌的费用, 并让卡牌与宝石可以点击
 	
 	var tree = get_tree()
+	tree.call_group("noticer", "flash")
 	tree.call_group_flags(
 		2,
 		"cards",
