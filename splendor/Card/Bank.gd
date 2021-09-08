@@ -13,17 +13,6 @@ export var deck = {
 }
 
 
-func reset():
-	deck = {
-		"senior": range(20),
-		"junior": range(30),
-		"primary": range(40)
-	}
-	randomize()
-	for v in deck.values():
-		v.shuffle()
-
-
 func draw_card(level: String, slot: int) -> void:
 	# 从牌堆补充卡牌, 此方法在仓库区的卡牌的"购买"按钮被点击后调用
 	# Args:
@@ -44,10 +33,12 @@ func draw_card(level: String, slot: int) -> void:
 	
 	# 从牌堆取一张牌放入对应位置, 由于牌堆为乱序, 故直接调用"pop_back"方法
 	card_slot.set_card(level, deck[level].pop_back())
+	get_node(level.capitalize() + "Counter").text = str(len(deck[level]))
 	
 	# 若卡已抽光, 隐藏对应牌堆
 	if len(deck[level]) == 0:
 		get_node(level.capitalize() + "Bank").hide()
+		get_node(level.capitalize() + "Counter").hide()
 
 
 func reserve_from_deck(level: String, with_gold: bool, local_player: bool = true) -> void:
@@ -86,6 +77,7 @@ func set_game_data(data: Dictionary) -> void:
 	
 	for level in data.keys():
 		deck[level] = data[level]["deck"]
+		get_node(level.capitalize() + "Counter").text = str(len(deck[level]))
 		for i in range(4):
 			var number: int = data[level]["slot"][i]
 			var slot: Card = get_node(level.capitalize() + "/Slot" + str(i))
