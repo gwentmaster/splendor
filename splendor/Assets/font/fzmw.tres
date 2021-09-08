@@ -1,8 +1,9 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=17]
 font_path = "res://Assets/font/fzmw.ttf"
 
 [resource]
 size = 180
-font_data = SubResource( 1 )
+outline_size = 5
+font_data = SubResource( 17 )

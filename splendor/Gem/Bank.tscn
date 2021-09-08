@@ -23,14 +23,30 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 Gem = ExtResource( 2 )
 
-[node name="BlueBank" type="Panel" parent="."]
+[node name="WhiteBank" type="Panel" parent="."]
 margin_right = 152.0
 margin_bottom = 154.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Gem" parent="WhiteBank" instance=ExtResource( 2 )]
+position = Vector2( 76.2, 77.1 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="TextureRect" parent="WhiteBank/Gem" index="1"]
+texture = ExtResource( 7 )
+
+[node name="BlueBank" type="Panel" parent="."]
+margin_top = 176.0
+margin_right = 152.0
+margin_bottom = 330.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
@@ -43,24 +59,6 @@ scale = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" parent="BlueBank/Gem" index="1"]
 texture = ExtResource( 3 )
-
-[node name="BrownBank" type="Panel" parent="."]
-margin_left = -0.600006
-margin_top = 176.0
-margin_right = 151.4
-margin_bottom = 330.0
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Gem" parent="BrownBank" instance=ExtResource( 2 )]
-position = Vector2( 76.2, 77.1 )
-scale = Vector2( 0.3, 0.3 )
-
-[node name="TextureRect" parent="BrownBank/Gem" index="1"]
-texture = ExtResource( 4 )
 
 [node name="GreenBank" type="Panel" parent="."]
 margin_top = 352.0
@@ -96,7 +94,7 @@ scale = Vector2( 0.3, 0.3 )
 [node name="TextureRect" parent="RedBank/Gem" index="1"]
 texture = ExtResource( 5 )
 
-[node name="WhiteBank" type="Panel" parent="."]
+[node name="BrownBank" type="Panel" parent="."]
 margin_top = 704.0
 margin_right = 152.0
 margin_bottom = 858.0
@@ -106,12 +104,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Gem" parent="WhiteBank" instance=ExtResource( 2 )]
+[node name="Gem" parent="BrownBank" instance=ExtResource( 2 )]
 position = Vector2( 76.2, 77.1 )
 scale = Vector2( 0.3, 0.3 )
 
-[node name="TextureRect" parent="WhiteBank/Gem" index="1"]
-texture = ExtResource( 7 )
+[node name="TextureRect" parent="BrownBank/Gem" index="1"]
+texture = ExtResource( 4 )
 
 [node name="GoldBank" type="Panel" parent="."]
 margin_top = 880.0
@@ -130,16 +128,16 @@ scale = Vector2( 0.3, 0.3 )
 [node name="TextureRect" parent="GoldBank/Gem" index="1"]
 texture = ExtResource( 8 )
 
+[connection signal="gui_input" from="WhiteBank" to="." method="_on_Bank_clicked" binds= [ "white" ]]
 [connection signal="gui_input" from="BlueBank" to="." method="_on_Bank_clicked" binds= [ "blue" ]]
-[connection signal="gui_input" from="BrownBank" to="." method="_on_Bank_clicked" binds= [ "brown" ]]
 [connection signal="gui_input" from="GreenBank" to="." method="_on_Bank_clicked" binds= [ "green" ]]
 [connection signal="gui_input" from="RedBank" to="." method="_on_Bank_clicked" binds= [ "red" ]]
-[connection signal="gui_input" from="WhiteBank" to="." method="_on_Bank_clicked" binds= [ "white" ]]
+[connection signal="gui_input" from="BrownBank" to="." method="_on_Bank_clicked" binds= [ "brown" ]]
 [connection signal="gui_input" from="GoldBank" to="." method="_on_Bank_clicked" binds= [ "gold" ]]
 
+[editable path="WhiteBank/Gem"]
 [editable path="BlueBank/Gem"]
-[editable path="BrownBank/Gem"]
 [editable path="GreenBank/Gem"]
 [editable path="RedBank/Gem"]
-[editable path="WhiteBank/Gem"]
+[editable path="BrownBank/Gem"]
 [editable path="GoldBank/Gem"]
