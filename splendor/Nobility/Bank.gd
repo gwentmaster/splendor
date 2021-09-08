@@ -55,7 +55,7 @@ func check_price(card_num: Dictionary) -> void:
 					"data": data
 				}
 			)
-			tree.call_group("log", "append_msg", data)
+			tree.call_group("log", "append_message", data)
 			nob.queue_free()
 
 		# 不能获取, 调整贵族卡位置
