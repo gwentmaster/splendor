@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/5.jpg-366ca838187c25b8d8d59a18f86c3309.stex"
+path="res://.import/back.png-6e2daae380f3e3e8ce3b7dea7e3f6f7f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/image/nobility/5.jpg"
-dest_files=[ "res://.import/5.jpg-366ca838187c25b8d8d59a18f86c3309.stex" ]
+source_file="res://Assets/image/nobility/back.png"
+dest_files=[ "res://.import/back.png-6e2daae380f3e3e8ce3b7dea7e3f6f7f.stex" ]
 
 [params]
 

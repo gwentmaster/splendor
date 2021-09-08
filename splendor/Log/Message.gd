@@ -71,7 +71,7 @@ func set_message(action: String, data: Dictionary):
 	elif action == "get_nobility":
 		$Action.text = "获得贵族"
 		var nob = TextureRect.new()
-		nob.texture = load("res://Assets/image/nobility/" + str(data["serial_number"]) + ".jpg")
+		nob.texture = load("res://Assets/image/nobility/" + str(data["serial_number"]) + ".png")
 		nob.rect_scale = NOB_SCALE
 		$Panel.add_child(nob)
 		

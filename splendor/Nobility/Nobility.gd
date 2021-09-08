@@ -18,7 +18,7 @@ func set_nobility(number: int) -> Nobility:
 	# Returns:
 	# 	贵族对象自身
 	
-	$TextureRect.texture = load("res://Assets/image/nobility/" + str(number) + ".jpg")
+	$TextureRect.texture = load("res://Assets/image/nobility/" + str(number) + ".png")
 	var data = NOBILITY_DATA[number]
 	serial_number = number
 	score = data["score"]
