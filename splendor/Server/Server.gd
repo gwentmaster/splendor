@@ -68,20 +68,22 @@ func _on_data() -> void:
 		send_json({"command": 4, "data": game_data})
 		
 	elif command == 5:  # broadcast
-		tree.call_group("log", "append_message", data)
+		tree.call_group_flags(2, "log", "append_message", data)
 		var action = data["action"]
 		if action == "purchase_card":
-			tree.call_group(
+			tree.call_group_flags(
+				2,
 				"player_" + data["name"],
 				"purchase_card",
 				data
 			)
 			if data["area"] == CardArea.BANK:
-				tree.call_group("card_bank", "draw_card", data["level"], data["slot"])
+				tree.call_group_flags(2, "card_bank", "draw_card", data["level"], data["slot"])
 			for c in data["cost"].keys():
-				tree.call_group("gem_bank", "gain_gem", c, data["cost"][c])
+				tree.call_group_flags(2, "gem_bank", "gain_gem", c, data["cost"][c])
 		elif action == "reserve_card":
-			tree.call_group(
+			tree.call_group_flags(
+				2,
 				"player_" + data["name"],
 				"reserve_card",
 				data["level"],
@@ -89,13 +91,14 @@ func _on_data() -> void:
 				data["with_gold"]
 			)
 			if data["area"] == CardArea.BANK:
-				tree.call_group("card_bank", "draw_card", data["level"], data["slot"])
+				tree.call_group_flags(2, "card_bank", "draw_card", data["level"], data["slot"])
 			elif data["area"] == CardArea.DECK:
-				tree.call_group("card_bank", "reserve_from_deck", data["level"], data["with_gold"], false)
+				tree.call_group_flags(2, "card_bank", "reserve_from_deck", data["level"], data["with_gold"], false)
 			if data["with_gold"]:
-				tree.call_group("gem_bank", "offer_gem", "gold")
+				tree.call_group_flags(2, "gem_bank", "offer_gem", "gold")
 		elif action == "get_gem":
-			tree.call_group(
+			tree.call_group_flags(
+				2,
 				"player_" + data["name"],
 				"gain_gem",
 				data["gems"]
@@ -104,12 +107,14 @@ func _on_data() -> void:
 				for i in range(data["gems"][c]):
 					tree.call_group_flags(2, "gem_bank", "offer_gem", c)
 		elif action == "get_nobility":
-			tree.call_group(
+			tree.call_group_flags(
+				2,
 				"player_" + data["name"],
 				"gain_nobility",
 				data["score"]
 			)
-			tree.call_group(
+			tree.call_group_flags(
+				2,
 				"nobility_bank",
 				"remove_nobility",
 				data["serial_number"]
