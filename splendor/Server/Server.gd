@@ -125,12 +125,17 @@ func _on_data() -> void:
 		
 	elif command == 7:  # round_start
 		tree.call_group_flags(2, "game", "round_start")
+		tree.call_group_flags(2, "opponent", "show_round_mark", false)
 		
 	elif command == 8:  # round_end
 		pass
 		
 	elif command == 9:  # game_end
 		pass
+		
+	elif command == 10:  # opponent_round_start
+		tree.call_group_flags(2, "opponent", "show_round_mark", false)
+		tree.call_group_flags(2, "player_" + data["name"], "show_round_mark", true)
 
 
 func _process(delta: float) -> void:

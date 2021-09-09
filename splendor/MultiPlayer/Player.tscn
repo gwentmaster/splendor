@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://MultiPlayer/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/image/gem/blue.png" type="Texture" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://Assets/image/gem/white.png" type="Texture" id=7]
 [ext_resource path="res://Assets/image/gem/gold.png" type="Texture" id=8]
 [ext_resource path="res://Assets/image/application/portrait.png" type="Texture" id=9]
+[ext_resource path="res://Assets/image/application/round_marker.png" type="Texture" id=10]
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 234, 105 )
 
@@ -21,14 +22,14 @@ font_path = "res://Assets/font/fzmw.ttf"
 size = 100
 font_data = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=4]
 size = 180
 font_data = SubResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 150
 corner_radius_top_right = 150
@@ -43,51 +44,51 @@ size = 450
 outline_size = 15
 font_data = SubResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=9]
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.00392157, 0.356863, 0.6, 1 )
 corner_radius_top_left = 150
 corner_radius_top_right = 150
 corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.0470588, 0.466667, 0.247059, 1 )
 corner_radius_top_left = 150
 corner_radius_top_right = 150
 corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.682353, 0.207843, 0.235294, 1 )
 corner_radius_top_left = 150
 corner_radius_top_right = 150
 corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.364706, 0.2, 0.137255, 1 )
 corner_radius_top_left = 150
 corner_radius_top_right = 150
 corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=14]
 size = 90
 font_data = SubResource( 2 )
 
 [node name="Player" type="Panel" groups=[
+"opponent",
 "resetable",
 "test_opponent",
 ]]
 margin_right = 1096.0
 margin_bottom = 490.0
-custom_styles/panel = SubResource( 16 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -111,7 +112,7 @@ __meta__ = {
 margin_left = 576.0
 margin_right = 755.0
 margin_bottom = 205.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -134,7 +135,7 @@ anchor_bottom = -2.094
 margin_top = 2017.07
 margin_right = 502.0
 margin_bottom = 2696.07
-custom_styles/normal = SubResource( 10 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -173,7 +174,7 @@ margin_top = 200.165
 margin_right = 654.0
 margin_bottom = 1163.16
 rect_scale = Vector2( 0.3, 0.3 )
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -185,7 +186,7 @@ anchor_bottom = -2.094
 margin_top = 2017.07
 margin_right = 502.0
 margin_bottom = 2696.07
-custom_styles/normal = SubResource( 6 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -236,7 +237,7 @@ anchor_bottom = -2.094
 margin_top = 2017.07
 margin_right = 502.0
 margin_bottom = 2696.07
-custom_styles/normal = SubResource( 12 )
+custom_styles/normal = SubResource( 11 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -290,7 +291,7 @@ anchor_bottom = -2.094
 margin_top = 2017.07
 margin_right = 502.0
 margin_bottom = 2696.07
-custom_styles/normal = SubResource( 13 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -341,7 +342,7 @@ anchor_bottom = -2.094
 margin_top = 2017.07
 margin_right = 502.0
 margin_bottom = 2696.07
-custom_styles/normal = SubResource( 14 )
+custom_styles/normal = SubResource( 13 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -414,7 +415,7 @@ margin_left = 920.0
 margin_top = 337.0
 margin_right = 1096.0
 margin_bottom = 486.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0/10"
 align = 1
@@ -428,11 +429,22 @@ margin_left = 755.2
 margin_top = 228.0
 margin_right = 906.2
 margin_bottom = 365.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0/3"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundMark" type="TextureRect" parent="."]
+visible = false
+margin_left = 984.0
+margin_right = 1362.0
+margin_bottom = 624.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
