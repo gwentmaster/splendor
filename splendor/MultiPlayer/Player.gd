@@ -29,7 +29,7 @@ func refresh_gem_num() -> void:
 	$GemSummary.text = str(gem_summary) + "/10"
 	
 	
-func set_name(name: String) -> void:
+func set_name(name: String):
 	# 设置玩家名称, 并添加至特定分组
 	# Args:
 	#     name: 玩家名称
@@ -37,6 +37,7 @@ func set_name(name: String) -> void:
 	self.add_to_group("player_" + name)
 	nick_name = name
 	$Name.text = name
+	return self
 
 
 func purchase_card(data: Dictionary) -> void:

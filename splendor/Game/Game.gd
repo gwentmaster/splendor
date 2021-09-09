@@ -1,6 +1,12 @@
 extends Panel
 
 
+export (PackedScene) var Opponent
+
+
+var OPPONENT_SCALE = Vector2(0.3, 0.3)
+
+
 func _ready():
 	#$AudioStreamPlayer2D.play()
 	pass
@@ -32,9 +38,12 @@ func set_game_data(data: Dictionary) -> void:
 	tree.call_group_flags(2, "gem_bank", "set_game_data", data["gem_bank"])
 	tree.call_group_flags(2, "nobility_bank", "set_game_data", data["nobility_bank"])
 	
-	# TODO
-	tree.call_group_flags(2, "test_opponent", "set_name", data["opponent"][0])
-	# TODO
+	for n in data["opponent"]:
+		var container = Container.new()
+		var opponent = Opponent.instance().set_name(n)
+		opponent.rect_scale = OPPONENT_SCALE
+		container.add_child(opponent)
+		$Opponent.add_child(container)
 
 
 func game_start(data: Dictionary) -> void:
