@@ -9,8 +9,8 @@ draw_center = false
 [node name="Bank" type="Panel" groups=[
 "nobility_bank",
 ]]
-margin_right = 494.0
-margin_bottom = 262.0
+margin_right = 204.0
+margin_bottom = 1028.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {

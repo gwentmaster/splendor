@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Nobility/Nobility.gd"
 }, {
+"base": "Panel",
+"class": "NobilityBank",
+"language": "GDScript",
+"path": "res://Nobility/Bank.gd"
+}, {
 "base": "Label",
 "class": "Noticer",
 "language": "GDScript",
@@ -69,6 +74,7 @@ _global_script_class_icons={
 "Log": "",
 "Message": "",
 "Nobility": "",
+"NobilityBank": "",
 "Noticer": ""
 }
 

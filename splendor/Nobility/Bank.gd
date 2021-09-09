@@ -1,4 +1,5 @@
 extends Panel
+class_name NobilityBank
 
 
 export (PackedScene) var Nobility
@@ -13,12 +14,12 @@ func set_game_data(nobilities: Array) -> void:
 		self.remove_child(c)
 		c.queue_free()
 	
-	var x = 100
+	var y = 100
 	
 	for n in nobilities:
 		var nob = Nobility.instance().set_nobility(n)
-		nob.position = Vector2(x, 100)
-		x += 250
+		nob.position = Vector2(100, y)
+		y += 220
 		add_child(nob)
 
 
@@ -72,7 +73,7 @@ func remove_nobility(serial_number: int) -> void:
 	var x = 100
 	for nob in self.get_children():
 		if nob.serial_number == serial_number:
-			self.remove_child(nob)  # TODO 此步骤能否在get_children的循环中进行?
+			self.remove_child(nob)
 			nob.queue_free()
 		else:
 			nob.position = Vector2(x, 100)

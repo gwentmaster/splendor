@@ -39,10 +39,14 @@ rect_scale = Vector2( 1.2, 1.2 )
 custom_styles/panel = SubResource( 2 )
 
 [node name="GemBank" parent="." instance=ExtResource( 2 )]
-margin_left = 896.0
-margin_top = 1.6001
-margin_right = -550.0
-margin_bottom = 135.6
+margin_left = 872.0
+margin_right = -574.0
+margin_bottom = 134.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="NobilityBank" parent="." instance=ExtResource( 8 )]
+margin_left = 976.0
+margin_right = 1180.0
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="Hand" parent="." instance=ExtResource( 1 )]
@@ -63,13 +67,6 @@ rect_scale = Vector2( 0.3, 0.3 )
 margin_left = 1122.46
 margin_right = 1122.46
 rect_scale = Vector2( 0.3, 0.3 )
-
-[node name="NobilityBank" parent="." instance=ExtResource( 8 )]
-margin_left = 1128.0
-margin_top = 293.04
-margin_right = 1622.0
-margin_bottom = 555.04
-rect_scale = Vector2( 0.6, 0.6 )
 
 [node name="Log" parent="." instance=ExtResource( 9 )]
 margin_left = 648.0
