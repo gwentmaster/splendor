@@ -29,7 +29,7 @@ func check_price(card_num: Dictionary) -> void:
 	#     card_num: 当前玩家各颜色卡牌数, 形如{"blue": 0, "brown": 3, ...}
 	
 	var tree = get_tree()
-	var x = 100
+	var y = 100
 	for nob in get_children():
 		
 		# 检查玩家能否获取当前贵族卡
@@ -61,8 +61,8 @@ func check_price(card_num: Dictionary) -> void:
 
 		# 不能获取, 调整贵族卡位置
 		else:
-			nob.position = Vector2(x, 100)
-			x += 250
+			nob.position = Vector2(100, y)
+			y += 220
 
 
 func remove_nobility(serial_number: int) -> void:
@@ -70,14 +70,14 @@ func remove_nobility(serial_number: int) -> void:
 	# Args:
 	#     serial_number: 需移除的贵族卡序号
 	
-	var x = 100
+	var y = 100
 	for nob in self.get_children():
 		if nob.serial_number == serial_number:
 			self.remove_child(nob)
 			nob.queue_free()
 		else:
-			nob.position = Vector2(x, 100)
-			x += 250
+			nob.position = Vector2(100, y)
+			y += 220
 
 
 func get_game_data() -> Array:
