@@ -64,8 +64,10 @@ margin_bottom = 576.131
 rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-margin_left = 1122.46
-margin_right = 1122.46
+margin_left = 1272.0
+margin_top = 2.4
+margin_right = 2368.0
+margin_bottom = 492.4
 rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="Log" parent="." instance=ExtResource( 9 )]
