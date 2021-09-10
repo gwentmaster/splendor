@@ -60,7 +60,8 @@ func check_price(card_num: Dictionary) -> void:
 		}
 		self.remove_nobility(buyable_nobs[0].serial_number)
 		tree.call_group_flags(2, "hand", "gain_nobility", buyable_nobs[0].score)
-		tree.call_group(
+		tree.call_group_flags(
+			2,
 			"server",
 			"send_json",
 			{
@@ -68,6 +69,7 @@ func check_price(card_num: Dictionary) -> void:
 				"data": data
 			}
 		)
+		tree.call_group("server", "send_json", {"command": 8, "data": {}})
 		tree.call_group_flags(2, "log", "append_message", data)
 
 	# 玩家能获取多个贵族, 由玩家选择1个获取
