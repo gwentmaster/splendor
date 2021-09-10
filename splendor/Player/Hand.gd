@@ -54,10 +54,7 @@ func purchase_card(cost: Dictionary, card_score: int, color: String) -> void:
 	card_num[color] += 1
 	refresh_card_num()
 
-	# 检查能否获得贵族卡
-	get_tree().call_group("nobility_bank", "check_price", card_num)
-	
-	
+
 func purchase_reserved_card(slot: int) -> void:
 	# 从保留卡中购买
 	# Args:
@@ -72,11 +69,8 @@ func purchase_reserved_card(slot: int) -> void:
 	
 	reserved_cards.erase([card.level, card.serial_number])
 	arrange_reserved_card()
-	
-	# 检查能否获得贵族卡
-	get_tree().call_group("nobility_bank", "check_price", card_num)
-	
-	
+
+
 func refresh_gem_num() -> void:
 	# 刷新标签所显示的宝石数目
 	

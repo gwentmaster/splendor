@@ -79,5 +79,5 @@ func round_end() -> void:
 	var tree = get_tree()
 	tree.call_group_flags(2, "cards", "set_selectable", false)
 	tree.call_group_flags(2, "gem_bank", "set_enable", "all", false)
-	tree.call_group_flags(2, "server", "send_json", {"command": 8, "data": {}})
+	tree.call_group_flags(2, "nobility_bank", "check_price", $Hand.card_num)
 	$Hand/RoundMark/TextureRect.hide()

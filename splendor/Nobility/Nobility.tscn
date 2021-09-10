@@ -1,28 +1,30 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Nobility/Nobility.gd" type="Script" id=1]
+[ext_resource path="res://Assets/image/application/confirm.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 19.5102, 19.5072 )
-
-[node name="Nobility" type="Area2D"]
-scale = Vector2( 5, 5 )
+[node name="Nobility" type="TextureRect" groups=[
+"nobility",
+]]
+margin_right = 490.0
+margin_bottom = 490.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ConfirmButtom" type="Button" parent="."]
+visible = false
+margin_left = 413.417
+margin_top = 169.897
+margin_right = 565.417
+margin_bottom = 314.897
+focus_mode = 0
+mouse_default_cursor_shape = 2
+icon = ExtResource( 3 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ConfirmButtom" to="." method="_on_ConfirmButtom_pressed"]
