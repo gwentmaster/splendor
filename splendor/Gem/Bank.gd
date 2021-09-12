@@ -107,15 +107,10 @@ func set_game_data(data: Dictionary) -> void:
 			gem_banks[c].show()
 
 
-func round_start(player_gem_num: int) -> void:
-	# 回合开始时, 检查玩家宝石数是否为10, 达到10则本回合无法拿取宝石
-	# Args:
-	#     player_gem_num: 玩家宝石总数
+func round_start() -> void:
+	# 回合开始时, 让宝石可点击
 	
-	if player_gem_num < 10:
-		set_enable("all", true)
-	else:
-		set_enable("all", false)
+	set_enable("all", true)
 
 
 func _on_Bank_clicked(event, color: String):

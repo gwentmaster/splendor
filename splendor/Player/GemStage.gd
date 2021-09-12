@@ -3,15 +3,10 @@ class_name GemStage
 
 
 export (PackedScene) var Gem
-var player_gem_num = 0
 
 
 func _ready():
 	self.hide()
-
-
-func set_player_gem_num(num: int) -> void:
-	player_gem_num = num
 
 
 func add_gem(color: String) -> void:
@@ -35,11 +30,7 @@ func add_gem(color: String) -> void:
 					tree.call_group("gem_bank", "set_enable", c, false)
 		2:  # 已拿满3个宝石, 则不能再拿
 			tree.call_group("gem_bank", "set_enable", "all", false)
-	
-	# 玩家总宝石数达10, 则不能再拿取宝石
-	if len(children) + 1 + player_gem_num >= 10:
-		tree.call_group("gem_bank", "set_enable", "all", false)
-	
+
 	# 调整已拿取宝石的位置, 并检查是否拿取2个同种宝石, 是则不能再拿
 	var middle = (len(children) + 1) / 2
 	var pad = 1 - (len(children) + 1) % 2

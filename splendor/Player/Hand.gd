@@ -79,7 +79,6 @@ func refresh_gem_num() -> void:
 		gem_sum += gem_num[key]
 		$Resource.get_node(key.capitalize() + "/GemCounter").text = str(gem_num[key])
 	$Resource/GemSum.text = str(gem_sum) + "/10"
-	get_tree().call_group("gem_stage", "set_player_gem_num", gem_sum)
 
 
 func refresh_card_num() -> void:

@@ -69,7 +69,7 @@ func round_start() -> void:  # TODO 添加回合开始提示
 		"round_start",
 		$Hand.card_num, $Hand.gem_num, $Hand.gem_sum, $GemBank.gem_num["gold"]
 	)
-	tree.call_group_flags(2, "gem_bank", "round_start", $Hand.gem_sum)
+	tree.call_group_flags(2, "gem_bank", "round_start")
 	$Hand/RoundMark/TextureRect.show()
 
 
@@ -79,5 +79,21 @@ func round_end() -> void:
 	var tree = get_tree()
 	tree.call_group_flags(2, "cards", "set_selectable", false)
 	tree.call_group_flags(2, "gem_bank", "set_enable", "all", false)
-	tree.call_group_flags(2, "nobility_bank", "check_price", $Hand.card_num)
+	
+	if $Hand.gem_sum > 10:
+		$GemSwitcher.show()
+		$GemSwitcher.set_data($Hand.gem_num, $Hand.gem_sum)
+	else:
+		tree.call_group_flags(2, "nobility_bank", "check_price", $Hand.card_num)
+		$Hand/RoundMark/TextureRect.hide()
+
+
+func _on_GemSwitcher_switch_confirmed(gems: Dictionary):
+
+	$Hand.pay_gem(gems)
+	for color in gems.keys():
+		if gems[color] <= 0:
+			continue
+		$GemBank.gain_gem(color, gems[color])
+	get_tree().call_group_flags(2, "nobility_bank", "check_price", $Hand.card_num)
 	$Hand/RoundMark/TextureRect.hide()
