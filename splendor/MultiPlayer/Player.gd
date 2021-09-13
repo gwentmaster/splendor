@@ -116,6 +116,13 @@ func gain_gem(gems: Dictionary) -> void:
 	refresh_gem_num()
 
 
+func pay_gem(gems: Dictionary) -> void:
+	
+	for color in gems.keys():
+		gem_num[color] -= gems[color]
+	refresh_gem_num()
+
+
 func show_round_mark(flag: bool) -> void:
 
 	if flag:

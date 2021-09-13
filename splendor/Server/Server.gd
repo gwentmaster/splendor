@@ -119,7 +119,22 @@ func _on_data() -> void:
 				"remove_nobility",
 				data["serial_number"]
 			)
-		
+		elif action == "switch_gem":
+			tree.call_group_flags(
+				2,
+				"player_" + data["name"],
+				"pay_gem",
+				data["gems"]
+			)
+			for c in data["gems"].keys():
+				tree.call_group_flags(
+					2,
+					"gem_bank",
+					"gain_gem",
+					c,
+					data["gems"][c]
+				)
+			
 	elif command == 6:  # game_start
 		tree.call_group_flags(2, "game", "game_start", data)
 		

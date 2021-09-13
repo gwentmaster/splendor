@@ -35,8 +35,8 @@ align = 1
 
 [node name="GemContainer" type="HBoxContainer" parent="."]
 margin_top = 320.0
-margin_right = 1376.0
-margin_bottom = 672.0
+margin_right = 1336.0
+margin_bottom = 600.0
 custom_constants/separation = 200
 alignment = 1
 __meta__ = {

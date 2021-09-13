@@ -74,7 +74,22 @@ func set_message(action: String, data: Dictionary):
 		nob.texture = load("res://Assets/image/nobility/" + str(data["serial_number"]) + ".png")
 		nob.rect_scale = NOB_SCALE
 		$Panel.add_child(nob)
-		
+
+	# 交还宝石
+	elif action == "switch_gem":
+		$Action.text = "交还"
+		var x = 0
+		for c in data["gems"].keys():
+			if data["gems"][c] == 0:
+				continue
+			for i in range(data["gems"][c]):
+				var gem = TextureRect.new()
+				gem.texture = load("res://Assets/image/gem/" + c + ".png")
+				gem.rect_scale = GEM_SCALE
+				gem.rect_position = Vector2(x, 0)
+				$Panel.add_child(gem)
+				x += 100
+	
 	return self
 
 

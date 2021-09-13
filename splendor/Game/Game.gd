@@ -95,5 +95,16 @@ func _on_GemSwitcher_switch_confirmed(gems: Dictionary):
 		if gems[color] <= 0:
 			continue
 		$GemBank.gain_gem(color, gems[color])
-	get_tree().call_group_flags(2, "nobility_bank", "check_price", $Hand.card_num)
+
+	var tree = get_tree()
+	var data = {"action": "switch_gem", "gems": gems}
+	tree.call_group_flags(2, "nobility_bank", "check_price", $Hand.card_num)
+	tree.call_group_flags(2, "log", "append_message", data)
+	tree.call_group_flags(
+		2,
+		"server",
+		"send_json",
+		{"command": 5, "data": data}
+	)
+
 	$Hand/RoundMark/TextureRect.hide()
